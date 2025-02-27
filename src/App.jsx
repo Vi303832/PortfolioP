@@ -51,7 +51,7 @@ function App() {
           animate={{ opacity: 1, scale: 1 }}  // Scroll ile görünür ve normal boyuta gelir
           transition={{ delay: 3, duration: 1 }} // 3 saniye sonra animasyon başlar
         >
-          <div className=' w-full relative h-full  flex flex-col  justify-start '>
+          <div className=' w-full relative h-full  flex flex-col  justify-start font-Poppins '>
 
             <div className=' text-[12vw] h-[30vh] w-full   flex justify-start items-start'>
               <div className=' flex items-center h-full font-bold w-full  '>
@@ -60,27 +60,73 @@ function App() {
             </div>
 
             {/*Alt Kısım*/}
-            <div className='flex   h-[55vh] bg-amber-300  max-md:flex-col   w-full gap-2'>
+            <div className='flex   h-[55vh]   max-md:flex-col   w-full gap-2'>
               <div className=' w-[50%] max-md:w-full'>
 
 
-                <div className='flex flex-col  gap-5 w-full  justify-start items-start '>
-                  <FiArrowDownRight className='text-6xl max-md:text-5xl  ' />
+                <div className='flex flex-col max-md:hidden  gap-5 w-full  justify-start items-start '>
+                  <FiArrowDownRight className='text-6xl max-md:text-5xl text-b ' />
 
-                  <div className='w-[70%]'>
+                  <div className='w-[70%] text-b text-xl '>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit saepe aliquam commodi molestias animi voluptatum alias ea maxime rerum esse? Dolore ex sapiente harum veritatis, asperiores vitae expedita corporis sunt.
                   </div>
-                  <button className='p-10 border-2'>
-                    İletişim
 
-                  </button>
+                  <div className=" outline-0 h-[70px] w-50 flex justify-center  rounded-4xl items-center cursor-pointer  text-beyaz  text-2xl overflow-hidden">
+                    <motion.div
+                      style={{
+                        backgroundColor: "#3B3835",
+
+
+                      }}
+                      whileHover={{
+                        backgroundColor: "#85856F",
+                        y: [0, -2, 0],
+                        scale: [1, 1.2, 1],
+                      }}
+                      initial={{
+                        scale: 1,
+                        y: 0,
+                      }}
+                      animate={{
+                        scale: 1,
+                        y: 0
+                      }}
+                      transition={{
+                        duration: 1, // Toplam animasyon süresi
+
+                        y: {
+                          duration: 1, // y animasyonunun süresi
+
+
+                        },
+                        scale: {
+                          duration: 1,
+
+
+                        },
+
+                        backgroundColor: {
+                          duration: 1, // Arka plan rengi değişim süresi
+
+                        },
+                      }}
+                      className='h-full w-full flex items-center justify-center rounded-4xl'
+                    >
+                      İletişim
+
+                    </motion.div>
+                  </div>
+
 
                 </div>
               </div>
 
 
-              <div className='w-[50%]    max-md:w-full'>
-                <img className='h-full' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
+              <div className='w-[50%]  flex gap-2  max-md:w-full'>
+                <img className='h-full w-[70%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
+                <div className='h-full w-full flex justify-start items-center'>
+                  (Frontend Dev)
+                </div>
               </div>
 
 
@@ -93,10 +139,10 @@ function App() {
 
           </div>
         </motion.div>
-      </div>
+      </div >
 
-      {/* Boşluk için div */}
-      <div className='min-h-[1000vh]  bg-black z-10'>
+
+      <div className='min-h-[1000vh]  bg-black z-10' >
         sadasdasdasdasds
       </div>
 
