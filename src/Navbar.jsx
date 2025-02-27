@@ -51,7 +51,7 @@ function Navbar() {
 
                         className='h-screen bg-b absolute  z-10 w-full'
                     >
-                        <div className='text-5xl p-5  flex justify-end  '>
+                        <div className='text-5xl p-5 text-a  flex justify-end  '>
                             <IoClose onClick={() => setopen(false)} className='cursor-pointer' />
                         </div>
 

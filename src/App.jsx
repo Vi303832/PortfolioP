@@ -10,18 +10,30 @@ function App() {
 
   // Scroll pozisyonunu takip etmek için bir ref oluştur
   const xDivRef = useRef(null);
+  const aboutRef = useRef(null);
 
-  // useScroll hook'u ile scroll pozisyonunu al
+
   const { scrollYProgress } = useScroll({
     target: xDivRef, // Scroll pozisyonunu X DİV için takip et
     offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [1, 0.3, 0]); // Yüksekliğin yarısında opaklık yarıya düşer ve sonuna gelindiğinde 0 olur
-  const scale = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.8, 0]); // Yüksekliğin yarısında boyut yarıya düşer ve sonuna gelindiğinde 0 olur
+  const aboutText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis.";
+  const words = aboutText.split(" "); // Kelimeleri ayır
+
+
+  const ref = useRef(null);
+
+
+  const { scrollYProgress: ScrollWord } = useScroll({ target: ref, offset: ["0%", "100%"] });
+
+
+
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [1, 0.3, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.8, 0]);
 
   return (
-    <div className="w-[100%] min-h-screen flex flex-col  bg-black -z-20 font-Poppins">
+    <div className="w-[100%] min-h-screen flex flex-col scroll-smooth  bg-a -z-50 font-Poppins">
 
       {/* Home Section */}
       <div className='h-screen   flex flex-col'>
@@ -142,8 +154,64 @@ function App() {
       </div >
 
 
-      <div className='min-h-[1000vh]  bg-black z-10' >
-        sadasdasdasdasds
+      <div className="min-h-screen bg-beyaz text-white font-Poppins">
+        {/* Sayfa içeriği */}
+
+        <div className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] max-md:h-[140vh] max-sm:h-[170vh]  rounded-t-4xl" ref={ref}>
+          <motion.div className=" flex flex-col  w-[90%] h-[70%]  max-md:h-[90%] gap-10 ">
+            <div className='text-3xl'>Hakkımda</div>
+            <div className='text-5xl'>
+              {words.map((word, index) => {
+
+                const opacity = useTransform(
+                  scrollYProgress,
+                  [index / words.length, (index + 1) / words.length],
+                  [0.5, 1]
+                );
+
+                return (
+                  <motion.span
+                    key={index}
+                    style={{ opacity }} // Kelimenin opaklığını ayarla
+                    className="inline-block mr-2"
+                  >
+                    {word}
+                  </motion.span>
+                );
+              })}
+
+            </div>
+
+
+
+          </motion.div>
+
+          <div className='h-2 w-[90%] absolute bottom-0 '>
+            <hr></hr>
+            <hr></hr>
+          </div>
+        </div>
+
+        <div className='h-screen w-full bg-a text-beyaz flex justify-center'>
+          <div className='w-[90%] bg-amber-500 flex flex-col justify-center'>
+            <div className='text-3xl'>Yetenekler</div>
+            <div className='bg-amber-800 h-full flex flex-col'>
+              <div>
+                REACT
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+
+
+
+
       </div>
 
     </div >
