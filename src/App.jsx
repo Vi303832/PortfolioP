@@ -5,13 +5,14 @@ import { motion, useScroll, useTransform } from 'framer-motion'; // useScroll ve
 import Home from './Home';
 
 import { FiArrowDownRight } from "react-icons/fi";
+import Skills from './Skills';
 
 function App() {
 
 
   // Scroll pozisyonunu takip etmek için bir ref oluştur
   const xDivRef = useRef(null);
-  const aboutRef = useRef(null);
+
 
 
   const { scrollYProgress } = useScroll({
@@ -88,51 +89,39 @@ function App() {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit saepe aliquam commodi molestias animi voluptatum alias ea maxime rerum esse? Dolore ex sapiente harum veritatis, asperiores vitae expedita corporis sunt.
                   </div>
 
-                  <div className=" outline-0 h-[70px] w-50 flex justify-center  rounded-4xl items-center cursor-pointer  text-beyaz  text-2xl overflow-hidden">
-                    <motion.div
-                      style={{
-                        backgroundColor: "#3B3835",
+                  <div className='w-[30vh] h-[10vh] overflow-hidden rounded-full '>
+                    <div className="relative flex w-full h-full cursor-pointer ">
+                      {/* Üstteki Buton */}
+                      <motion.button
+                        className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer"
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}
+                      >
+                        <div className='z-30 absolute  w-full h-full  top-[35%]'>İletişim</div>
+                      </motion.button>
+
+                      {/* Alttaki Buton */}
+                      <motion.button
+                        className="absolute w-0 h-full bg-[#85856F] text-white  rounded-full"
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}
+                        initial={{
+                          width: "0",
+                          left: "-100px",
+                        }}
+                        animate={{
+                          width: hovered ? "100%" : "0",
+                          left: hovered ? "0" : "-100px"
 
 
-                      }}
-                      whileHover={{
-                        backgroundColor: "#85856F",
-                        y: [0, -2, 0],
-                        scale: [1, 1.2, 1],
-                      }}
-                      initial={{
-                        scale: 1,
-                        y: 0,
-                      }}
-                      animate={{
-                        scale: 1,
-                        y: 0
-                      }}
-                      transition={{
-                        duration: 1, // Toplam animasyon süresi
+                        }}  // Hover durumuna göre genişlik ayarlanır
+                        transition={{ duration: 1 }}  // 2 saniyelik geçiş süresi
+                      />
+                    </div>
 
-                        y: {
-                          duration: 1, // y animasyonunun süresi
-
-
-                        },
-                        scale: {
-                          duration: 1,
-
-
-                        },
-
-                        backgroundColor: {
-                          duration: 1, // Arka plan rengi değişim süresi
-
-                        },
-                      }}
-                      className='h-full w-full flex items-center justify-center rounded-4xl'
-                    >
-                      İletişim
-
-                    </motion.div>
                   </div>
+
+
 
 
                 </div>
@@ -198,48 +187,9 @@ function App() {
           </div>
         </div>
 
-        <div className='h-screen w-full bg-a text-beyaz flex justify-center'>
-          <div className='w-[90%] bg-amber-500 flex flex-col justify-center'>
-            <div className='text-3xl'>Yetenekler</div>
-            <div className='bg-amber-800 h-full flex flex-col'>
-              <div>
-                REACT
-              </div>
-
-            </div>
-
-          </div>
+        <Skills />
 
 
-
-
-        </div>
-        <div className='h-[50vh] w-full bg-gray-500 z-10 flex justify-center items-center relative'>
-          <div className='w-[40vh] h-[40vh]'>
-            <div className="relative flex w-20">
-              {/* Üstteki Buton */}
-              <motion.button
-                className="absolute w-full h-12 bg-blue-500 text-white rounded-md"
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-              >
-                Üst Buton
-              </motion.button>
-
-              {/* Alttaki Buton */}
-              <motion.button
-                className="absolute w-0 h-12 bg-green-500 text-white rounded-md"
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-                initial={{ width: "0" }}
-                animate={{ width: hovered ? "100%" : "0" }}  // Hover durumuna göre genişlik ayarlanır
-                transition={{ duration: 2 }}  // 2 saniyelik geçiş süresi
-              />
-            </div>
-
-          </div>
-
-        </div>
       </div>
 
     </div >
