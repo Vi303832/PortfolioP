@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import foto from "./assets/bg1.jpg";
 import { motion, useScroll, useTransform } from 'framer-motion'; // useScroll ve useTransform eklendi
 import Home from './Home';
+
 import { FiArrowDownRight } from "react-icons/fi";
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
   const words = aboutText.split(" "); // Kelimeleri ayır
 
 
+  const [hovered, setHovered] = useState(false);
+
   const ref = useRef(null);
 
 
@@ -34,6 +37,8 @@ function App() {
 
   return (
     <div className="w-[100%] min-h-screen flex flex-col scroll-smooth  bg-a -z-50 font-Poppins">
+
+
 
       {/* Home Section */}
       <div className='h-screen   flex flex-col'>
@@ -138,6 +143,7 @@ function App() {
                 <img className='h-full w-[70%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
                 <div className='h-full w-full flex justify-start items-center'>
                   (Frontend Dev)
+
                 </div>
               </div>
 
@@ -166,7 +172,7 @@ function App() {
                 const opacity = useTransform(
                   scrollYProgress,
                   [index / words.length, (index + 1) / words.length],
-                  [0.5, 1]
+                  [0.1, 1]
                 );
 
                 return (
@@ -208,10 +214,32 @@ function App() {
 
 
         </div>
+        <div className='h-[50vh] w-full bg-gray-500 z-10 flex justify-center items-center relative'>
+          <div className='w-[40vh] h-[40vh]'>
+            <div className="relative flex w-20">
+              {/* Üstteki Buton */}
+              <motion.button
+                className="absolute w-full h-12 bg-blue-500 text-white rounded-md"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+              >
+                Üst Buton
+              </motion.button>
 
+              {/* Alttaki Buton */}
+              <motion.button
+                className="absolute w-0 h-12 bg-green-500 text-white rounded-md"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                initial={{ width: "0" }}
+                animate={{ width: hovered ? "100%" : "0" }}  // Hover durumuna göre genişlik ayarlanır
+                transition={{ duration: 2 }}  // 2 saniyelik geçiş süresi
+              />
+            </div>
 
+          </div>
 
-
+        </div>
       </div>
 
     </div >
