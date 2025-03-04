@@ -3,9 +3,11 @@ import Navbar from './Navbar';
 import foto from "./assets/bg1.jpg";
 import { motion, useScroll, useTransform } from 'framer-motion'; // useScroll ve useTransform eklendi
 import Home from './Home';
+import Works from './Works';
 
 import { FiArrowDownRight } from "react-icons/fi";
 import Skills from './Skills';
+import Skills2 from './Skills2';
 
 function App() {
 
@@ -21,7 +23,7 @@ function App() {
   });
 
   const aboutText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis.";
-  const words = aboutText.split(" "); // Kelimeleri ayır
+  const words = aboutText.split(" ");
 
 
   const [hovered, setHovered] = useState(false);
@@ -149,12 +151,12 @@ function App() {
       </div >
 
 
-      <div className="min-h-screen bg-beyaz text-white font-Poppins">
+      <div className="min-h-screen bg-beyaz text-kbeyaz font-Poppins">
         {/* Sayfa içeriği */}
 
         <div className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] max-md:h-[140vh] max-sm:h-[170vh]  rounded-t-4xl" ref={ref}>
           <motion.div className=" flex flex-col  w-[90%] h-[70%]  max-md:h-[90%] gap-10 ">
-            <div className='text-3xl'>Hakkımda</div>
+            <div className='text-3xl text-beyaz'>Hakkımda</div>
             <div className='text-5xl'>
               {words.map((word, index) => {
 
@@ -187,9 +189,15 @@ function App() {
           </div>
         </div>
 
-        <Skills />
+
+        <Skills2 />
+
+        <div className='w-full relative'>
+          <hr className='w-[90%]' />
+        </div>
 
 
+        <Works />
       </div>
 
     </div >
