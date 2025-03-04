@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setstarted(true)
-    }, 6500);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -78,7 +78,7 @@ function App() {
         {/* X DİV için kalan tüm yüksekliği kapla */}
         <motion.div
           ref={xDivRef}
-          className="  z-10  w-full  h-[85%] overflow-hidden   px-10 "
+          className="  z-10  w-full  h-[90%] overflow-hidden   px-10 "
           style={{
             opacity,  // Kaydırmaya göre opaklık değişir
             scale,    // Kaydırmaya göre boyut değişir
@@ -87,34 +87,43 @@ function App() {
           animate={{ opacity: 1, scale: 1 }}  // Scroll ile görünür ve normal boyuta gelir
           transition={{ delay: 2, duration: 1 }} // 3 saniye sonra animasyon başlar
         >
-          <div className=' w-full relative h-full  flex flex-col  justify-start font-Poppins '>
+          <div className=' w-full relative h-full   flex flex-col  justify-start font-Poppins '>
 
-            <div className=' text-[12vw] h-[30vh]  w-full overflow-hidden    flex justify-start items-start'>
-              <motion.div
+            <div className=' text-[13vw] h-[35vh]    w-full overflow-hidden    flex justify-start items-start'>
+              <motion.div>
+                <motion.div
 
-                initial={{
-                  bottom: "-330px",
-                  height: 0,
-                  position: 'relative',
-                  textSizeAdjust: 0,
+                  initial={{
+                    bottom: "-300px",
 
-                }}
-                animate={{
-                  height: "100%",
-                  bottom: 0,
-                  textSizeAdjust: "100%",
+                    height: 0,
+                    position: 'relative',
+                    textSizeAdjust: 0,
+
+                  }}
+                  animate={{
+                    height: "100%",
+
+                    bottom: 0,
+                    textSizeAdjust: "100%",
 
 
-                }}
-                transition={{ duration: 1, delay: 3.5 }}
+                  }}
+                  transition={{ duration: 1, delay: 3.5 }}
 
-                className=' flex items-center  font-bold w-full tracking-wide '>
-                KİAF TERANYİ
+                  className=' flex items-center justify-between gap-10 font-bold w-full tracking-wide  max-xl:gap-5 flex-nowrap  max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0 max-md:text-[10vw] '>
+
+                  <div
+                  >AKİF</div>
+                  <div>TANYERİ</div>
+
+                </motion.div>
               </motion.div>
+
             </div>
 
             {/*Alt Kısım*/}
-            <div className='flex   h-[55vh]   max-md:flex-col   w-full gap-2'>
+            <div className='flex   h-[55vh]   max-md:flex-col  w-full gap-2'>
               <div className=' w-[50%] max-md:w-full'>
 
 
