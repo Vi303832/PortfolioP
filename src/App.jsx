@@ -17,7 +17,9 @@ import Skills2 from './Skills2';
 function App() {
 
 
-  // Scroll pozisyonunu takip etmek için bir ref oluştur
+  let [started, setstarted] = useState(false)
+
+
   const xDivRef = useRef(null);
 
 
@@ -27,8 +29,17 @@ function App() {
     offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
   });
 
+
   const aboutText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis.";
   const words = aboutText.split(" ");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setstarted(true)
+    }, 6500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
 
   const [hovered, setHovered] = useState(false);
@@ -291,7 +302,7 @@ function App() {
       </div >
 
 
-      <div className="min-h-screen bg-beyaz text-kbeyaz font-Poppins">
+      <div className={`min-h-screen bg-beyaz text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
         {/* Sayfa içeriği */}
 
         <div className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] max-md:h-[140vh] max-sm:h-[170vh]  rounded-t-4xl" ref={ref}>
