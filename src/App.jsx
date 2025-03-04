@@ -4,6 +4,11 @@ import foto from "./assets/bg1.jpg";
 import { motion, useScroll, useTransform } from 'framer-motion'; // useScroll ve useTransform eklendi
 import Home from './Home';
 import Works from './Works';
+import { FaReact } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 
 import { FiArrowDownRight } from "react-icons/fi";
 import Skills from './Skills';
@@ -62,21 +67,39 @@ function App() {
         {/* X DİV için kalan tüm yüksekliği kapla */}
         <motion.div
           ref={xDivRef}
-          className="  z-10  w-full  h-[85%] overflow-hidden  px-10 "
+          className="  z-10  w-full  h-[85%] overflow-hidden   px-10 "
           style={{
             opacity,  // Kaydırmaya göre opaklık değişir
             scale,    // Kaydırmaya göre boyut değişir
           }}
           initial={{ opacity: 0, scale: 0 }} // Başlangıçta gizli ve küçük
           animate={{ opacity: 1, scale: 1 }}  // Scroll ile görünür ve normal boyuta gelir
-          transition={{ delay: 3, duration: 1 }} // 3 saniye sonra animasyon başlar
+          transition={{ delay: 2, duration: 1 }} // 3 saniye sonra animasyon başlar
         >
           <div className=' w-full relative h-full  flex flex-col  justify-start font-Poppins '>
 
-            <div className=' text-[12vw] h-[30vh] w-full   flex justify-start items-start'>
-              <div className=' flex items-center h-full font-bold w-full  '>
+            <div className=' text-[12vw] h-[30vh]  w-full overflow-hidden    flex justify-start items-start'>
+              <motion.div
+
+                initial={{
+                  bottom: "-330px",
+                  height: 0,
+                  position: 'relative',
+                  textSizeAdjust: 0,
+
+                }}
+                animate={{
+                  height: "100%",
+                  bottom: 0,
+                  textSizeAdjust: "100%",
+
+
+                }}
+                transition={{ duration: 1, delay: 3.5 }}
+
+                className=' flex items-center  font-bold w-full tracking-wide '>
                 KİAF TERANYİ
-              </div>
+              </motion.div>
             </div>
 
             {/*Alt Kısım*/}
@@ -85,13 +108,56 @@ function App() {
 
 
                 <div className='flex flex-col max-md:hidden  gap-5 w-full  justify-start items-start '>
-                  <FiArrowDownRight className='text-6xl max-md:text-5xl text-b ' />
+                  <motion.div
 
-                  <div className='w-[70%] text-b text-xl '>
+                    initial={{
+                      scale: 0,
+
+                    }}
+                    animate={{
+
+                      scale: 1,
+
+                    }}
+                    transition={{ duration: 1, delay: 6 }}
+
+                  >
+                    <FiArrowDownRight className='text-6xl max-md:text-5xl text-b ' />
+                  </motion.div>
+
+
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      left: "-100px"
+                    }}
+                    animate={{
+                      left: 0,
+                      opacity: 1,
+
+                    }}
+                    transition={{ duration: 1, delay: 4.5 }}
+
+                    className='w-[70%] text-b text-xl relative '>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit saepe aliquam commodi molestias animi voluptatum alias ea maxime rerum esse? Dolore ex sapiente harum veritatis, asperiores vitae expedita corporis sunt.
-                  </div>
+                  </motion.div>
 
-                  <div className='w-[30vh] h-[10vh] overflow-hidden rounded-full '>
+                  <motion.div
+
+
+                    initial={{
+                      scale: 0,
+
+                    }}
+                    animate={{
+
+                      scale: 1,
+
+                    }}
+                    transition={{ duration: 1, delay: 4.5 }}
+
+
+                    className='w-[30vh] h-[10vh] overflow-hidden rounded-full '>
                     <div className="relative flex w-full h-full cursor-pointer ">
                       {/* Üstteki Buton */}
                       <motion.button
@@ -110,10 +176,11 @@ function App() {
                         initial={{
                           width: "0",
                           left: "-100px",
+
                         }}
                         animate={{
                           width: hovered ? "100%" : "0",
-                          left: hovered ? "0" : "-100px"
+                          left: hovered ? "0" : "-100px",
 
 
                         }}  // Hover durumuna göre genişlik ayarlanır
@@ -121,22 +188,95 @@ function App() {
                       />
                     </div>
 
+                  </motion.div>
+
+
+
+
+                </div>
+              </div>
+
+
+              <motion.div
+
+
+                initial={{
+
+                  height: 0
+                }}
+                animate={{
+
+                  height: "100%"
+
+                }}
+
+                transition={{ duration: 1, delay: 5 }}
+
+
+                className='w-[50%]  flex gap-2 object-cover  max-md:w-full'>
+
+                <img className='h-full w-[70%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
+                <div className='h-full w-full flex justify-start flex-col gap-5 items-center'>
+                  <motion.div
+                    initial={{
+
+                      height: 0
+                    }}
+                    animate={{
+
+                      height: "70%"
+
+                    }}
+
+                    transition={{ duration: 1, delay: 5 }}
+
+                    className='flex gap-10 flex-col     '
+                  >
+                    <FaLinkedin className='text-4xl' />
+                    <FaGithub className='text-4xl' />
+                    <FaInstagram className='text-4xl' />
+
+                    <FaYoutube className='text-4xl' />
+                  </motion.div>
+                  <div className='relative h-[30px]  '>
+                    <motion.div
+
+                      initial={{
+                        opacity: 0,
+
+
+                      }}
+                      animate={{
+
+                        opacity: "100%"
+                      }}
+                      transition={{ duration: 3, delay: 4 }}
+                      className='relative'
+                    >
+                      <motion.div
+
+                        initial={{
+                          left: "-400px",
+
+
+                        }}
+                        animate={{
+                          left: 0,
+
+
+                        }}
+                        transition={{ duration: 1, delay: 4 }}
+                        className='relative'
+                      >
+                        (Bridging Design & Development)
+                      </motion.div>
+                    </motion.div>
+
                   </div>
 
-
-
-
                 </div>
-              </div>
 
-
-              <div className='w-[50%]  flex gap-2  max-md:w-full'>
-                <img className='h-full w-[70%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
-                <div className='h-full w-full flex justify-start items-center'>
-                  (Frontend Dev)
-
-                </div>
-              </div>
+              </motion.div>
 
 
 
