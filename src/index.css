@@ -3,6 +3,10 @@
 @import "tailwindcss";
 
 
+html {
+    scroll-behavior: smooth;
+  }
+  
 @theme{
 
 --font-Montserrat:Montserrat;
@@ -13,3 +17,4 @@
 --color-kbeyaz:#A19D99;
 
 }
+
