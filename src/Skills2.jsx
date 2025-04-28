@@ -1,13 +1,48 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import {
+    FaReact,
+    FaNodeJs,
+    FaGithub
+} from 'react-icons/fa';
+import {
+    SiNextdotjs,
+    SiTailwindcss,
+    SiJavascript,
+    SiExpress,
+    SiMongodb,
+    SiFirebase
+} from 'react-icons/si';
 
 function Skills() {
+    const techIcons = [
+        { icon: <FaReact className="text-3xl" />, name: "React.js" },
+        { icon: <SiNextdotjs className="text-3xl" />, name: "Next.js" },
+        { icon: <SiTailwindcss className="text-3xl" />, name: "Tailwind CSS" },
+        { icon: <SiJavascript className="text-3xl" />, name: "JavaScript" },
+        { icon: <FaNodeJs className="text-3xl" />, name: "Node.js" },
+        { icon: <SiExpress className="text-3xl" />, name: "Express.js" },
+        { icon: <SiMongodb className="text-3xl" />, name: "MongoDB" },
+        { icon: <SiFirebase className="text-3xl" />, name: "Firebase" },
+        { icon: <FaGithub className="text-3xl" />, name: "Git & GitHub" },
+    ];
 
     const components = [
-        { id: 1, title: "LOREM İPSUM DOLOR", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsum minus maiores. Necessitatibus quos aut eius expedita excepturi facere nihil." },
-        { id: 2, title: "RESPONSİVE DESİGN", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsum minus maiores. Necessitatibus quos aut eius expedita excepturi facere nihil." },
-        { id: 3, title: "ANIMATION", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsum minus maiores. Necessitatibus quos aut eius expedita excepturi facere nihil." },
-        { id: 4, title: "UI/UX", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsum minus maiores. Necessitatibus quos aut eius expedita excepturi facere nihil." },
+        { id: 1, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
+        { id: 2, title: "BACKEND", description: "Node.js ve Express.js teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
+        { id: 3, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
+        {
+            id: 4,
+            title: "TEKNOLOJİLER",
+            description: <div className="flex flex-wrap gap-4">
+                {techIcons.map((tech, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                        {tech.icon}
+                        <span>{tech.name}</span>
+                    </div>
+                ))}
+            </div>
+        },
     ];
 
     return (

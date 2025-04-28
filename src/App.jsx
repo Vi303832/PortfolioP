@@ -30,7 +30,7 @@ function App() {
   });
 
 
-  const aboutText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, corporis.";
+  const aboutText = "Frontend alanında uzmanlaşan bir geliştiriciyim. React, Next.js ve TailwindCSS gibi modern teknolojilerle kullanıcı deneyimi yüksek arayüzler geliştiriyorum. Aynı zamanda Node.js ve Express.js ile backend tarafında da üretken çözümler üretebiliyorum. Yazılım dünyasında öğrenmeye ve üretmeye tutkuyla bağlıyım. Şu anda kendimi geliştirerek sektörde sağlam bir yer edinmeyi hedefliyorum.";
   const words = aboutText.split(" ");
 
   useEffect(() => {
@@ -159,7 +159,7 @@ function App() {
                     transition={{ duration: 1, delay: 4.5 }}
 
                     className='w-[70%] text-b text-xl relative '>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit saepe aliquam commodi molestias animi voluptatum alias ea maxime rerum esse? Dolore ex sapiente harum veritatis, asperiores vitae expedita corporis sunt.
+                    Modern, kullanıcı odaklı web uygulamaları geliştiriyorum. React ve Node.js teknolojileriyle güçlü çözümler üretiyorum
                   </motion.div>
 
                   <motion.div
