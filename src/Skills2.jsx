@@ -46,7 +46,7 @@ function SkillComponent({ title, description }) {
             <div className='flex h-full w-full absolute items-center'>
                 <div className='w-full h-full relative'>
                     {/* Siyah arka plan ve şeffaf yazı */}
-                    <div className='absolute px-2 h-full w-full flex items-center bg-a'>
+                    <div className='absolute px-2 h-full w-full flex items-center max-xl:text-4xl bg-a'>
                         <div className='text-transparent' style={{ WebkitTextStroke: '2px white' }}>{title}</div>
                     </div>
 
@@ -56,7 +56,7 @@ function SkillComponent({ title, description }) {
                             clipPath: 'polygon(0 0, var(--clip-width) 0, var(--clip-width) 100%, 0 100%)',
                             ['--clip-width']: width, // width değerini CSS değişkeni olarak kullan
                         }}
-                        className='absolute px-2 h-full w-full bg-kbeyaz flex items-center'
+                        className='absolute px-2 h-full w-full bg-kbeyaz flex items-center max-xl:text-4xl'
                     >
                         <div className='text-transparent' style={{ WebkitTextStroke: '2px black' }}>{title}</div>
                     </motion.div>

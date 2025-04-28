@@ -66,19 +66,19 @@ function Navbar() {
                         </div>
 
                         <div className='flex  gap-10 min-md:hidden flex-col py-10 items-center justify-center text-white'>
-                            <div>
+                            <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none "}`} >
                                 Home,
                             </div>
-                            <div>
+                            <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
                                 About Me,
                             </div>
-                            <div>
+                            <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
                                 Skills,
                             </div>
-                            <div>
+                            <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
                                 Works,
                             </div>
-                            <div>
+                            <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
                                 Contact,
                             </div>
 

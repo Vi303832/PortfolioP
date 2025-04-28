@@ -114,8 +114,8 @@ function App() {
                   className=' flex items-center justify-between gap-10 font-bold w-full tracking-wide  max-xl:gap-5 flex-nowrap  max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0 max-md:text-[10vw] '>
 
                   <div
-                  >AKİF</div>
-                  <div>TANYERİ</div>
+                  >KİFA</div>
+                  <div>TAYNERİ</div>
 
                 </motion.div>
               </motion.div>
@@ -250,13 +250,13 @@ function App() {
 
                     transition={{ duration: 1, delay: 5 }}
 
-                    className='flex gap-10 flex-col     '
+                    className='flex gap-10 flex-col   items-center   '
                   >
-                    <FaLinkedin className='text-4xl' />
-                    <FaGithub className='text-4xl' />
-                    <FaInstagram className='text-4xl' />
+                    <FaLinkedin className='text-4xl max-xl:text-7xl w-full   h-full  ' />
+                    <FaGithub className='text-4xl max-xl:text-7xl w-full  h-full' />
+                    <FaInstagram className='text-4xl  xl max-xl:text-7xl w-full h-full' />
 
-                    <FaYoutube className='text-4xl' />
+                    <FaYoutube className='text-4xl max-xl:text-7xl w-full   h-full' />
                   </motion.div>
                   <div className='relative h-[30px]  '>
                     <motion.div
@@ -288,7 +288,7 @@ function App() {
                         transition={{ duration: 1, delay: 4 }}
                         className='relative'
                       >
-                        (Bridging Design & Development)
+                        <span className='text-center flex items-center justify-center'>   (Bridging Design & Development)</span>
                       </motion.div>
                     </motion.div>
 
@@ -314,10 +314,10 @@ function App() {
       <div className={`min-h-screen bg-beyaz text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
         {/* Sayfa içeriği */}
 
-        <div className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] max-md:h-[140vh] max-sm:h-[170vh]  rounded-t-4xl" ref={ref}>
-          <motion.div className=" flex flex-col  w-[90%] h-[70%]  max-md:h-[90%] gap-10 ">
+        <div className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] rounded-t-4xl" ref={ref}>
+          <motion.div className=" flex flex-col  w-[90%] h-[70%]  gap-10 ">
             <div className='text-3xl text-beyaz'>Hakkımda</div>
-            <div className='text-5xl'>
+            <div className='text-5xl  max-md:text-2xl  '>
               {words.map((word, index) => {
 
                 const opacity = useTransform(
@@ -330,7 +330,7 @@ function App() {
                   <motion.span
                     key={index}
                     style={{ opacity }} // Kelimenin opaklığını ayarla
-                    className="inline-block mr-2"
+                    className="inline-block mr-2  "
                   >
                     {word}
                   </motion.span>
