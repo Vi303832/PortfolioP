@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Navbar from './Navbar';
 import foto from "./assets/bg1.jpg";
-import { motion, useScroll, useTransform } from 'framer-motion'; // useScroll ve useTransform eklendi
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Home from './Home';
 import Works from './Works';
 import { FaReact } from "react-icons/fa";
@@ -9,12 +9,13 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-
 import { FiArrowDownRight } from "react-icons/fi";
 import Skills from './Skills';
 import Skills2 from './Skills2';
 
+
 function App() {
+
 
 
   let [started, setstarted] = useState(false)
@@ -55,12 +56,13 @@ function App() {
   const scale = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.8, 0]);
 
   return (
+
     <div className="w-[100%] min-h-screen flex flex-col scroll-smooth  bg-a -z-50 font-Poppins">
 
 
 
       {/* Home Section */}
-      <div className='h-screen   flex flex-col'>
+      <div className='h-screen  !scroll-smooth   flex flex-col '>
 
 
         <Home />
@@ -311,7 +313,7 @@ function App() {
       </div >
 
 
-      <div className={`min-h-screen bg-beyaz text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
+      <div className={`min-h-screen  bg-beyaz text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
         {/* Sayfa içeriği */}
 
         <div className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] rounded-t-4xl" ref={ref}>
@@ -319,18 +321,27 @@ function App() {
             <div className='text-3xl text-beyaz'>Hakkımda</div>
             <div className='text-5xl  max-md:text-2xl  '>
               {words.map((word, index) => {
-
+                // Her kelime için daha geniş bir scroll aralığı ve daha yumuşak geçiş
                 const opacity = useTransform(
                   scrollYProgress,
-                  [index / words.length, (index + 1) / words.length],
-                  [0.1, 1]
+                  [
+                    0.3 + (index / words.length * 0.6),  // Başlangıç pozisyonu (daha erken)
+                    0.4 + (index / words.length * 0.6)   // Bitiş pozisyonu (daha geç)
+                  ],
+                  [0.1, 1]  // Tamamen görünmezden tamamen görünüre
                 );
 
                 return (
                   <motion.span
                     key={index}
+<<<<<<< HEAD
                     style={{ opacity }} // Kelimenin opaklığını ayarla
                     className="inline-block mr-2  "
+=======
+                    style={{ opacity }}
+                    className="inline-block  mr-2 my-1 whitespace-nowrap "
+                    transition={{ duration: 0.5 }}  // Daha yavaş geçiş için
+>>>>>>> imp
                   >
                     {word}
                   </motion.span>
