@@ -334,14 +334,9 @@ function App() {
                 return (
                   <motion.span
                     key={index}
-<<<<<<< HEAD
-                    style={{ opacity }} // Kelimenin opaklığını ayarla
-                    className="inline-block mr-2  "
-=======
                     style={{ opacity }}
                     className="inline-block  mr-2 my-1 whitespace-nowrap "
                     transition={{ duration: 0.5 }}  // Daha yavaş geçiş için
->>>>>>> imp
                   >
                     {word}
                   </motion.span>
