@@ -10,11 +10,15 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FiArrowDownRight } from "react-icons/fi";
-import Skills from './Skills';
+
 import Skills2 from './Skills2';
+
+import bg from "./assets/bg1.jpg";
 
 
 function App() {
+
+
 
 
 
@@ -22,13 +26,53 @@ function App() {
 
 
   const xDivRef = useRef(null);
+  const contentref = useRef(null);
 
-
+  const ref = useRef(null);
+  const ref4 = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: xDivRef, // Scroll pozisyonunu X DİV için takip et
     offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
   });
+
+
+
+  const { scrollYProgress: scrollY2Progress } = useScroll({
+    target: xDivRef,
+    offset: ["start start", "end end"],
+  });
+
+  const { scrollYProgress: scrollY3Progress } = useScroll({
+    target: ref, // Scroll pozisyonunu X DİV için takip et
+    offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
+  });
+
+
+  const { scrollYProgress: scrollY4Progress } = useScroll({
+    target: contentref, // Scroll pozisyonunu X DİV için takip et
+    offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
+  });
+
+
+  const { scrollYProgress: ScrollWord } = useScroll({ target: ref, offset: ["0%", "100%"] });
+
+
+
+  const o1 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [1, 0.8, 0.6, 0.4, 0.2, 0]);
+  const size1 = useTransform(scrollYProgress, [0.5, 1], [1, 0.5]);
+  const opacity = useTransform(scrollY3Progress, [0, 0.3, 1], [1, 0.3, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.4, 1], [1, 0.6, 0.6]);
+
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 600]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const y3 = useTransform(scrollY4Progress, [0, 0.2], [0, -300]);
+
+  {/*
+  const y1 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [0, 80, 160, 240, 320, 400]);
+  const y2 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1], [0, 40, 80, 120, 140, 160, 200]);
+*/}
 
 
   const aboutText = "Frontend alanında uzmanlaşan bir geliştiriciyim. React, Next.js ve TailwindCSS gibi modern teknolojilerle kullanıcı deneyimi yüksek arayüzler geliştiriyorum. Aynı zamanda Node.js ve Express.js ile backend tarafında da üretken çözümler üretebiliyorum. Yazılım dünyasında öğrenmeye ve üretmeye tutkuyla bağlıyım. Şu anda kendimi geliştirerek sektörde sağlam bir yer edinmeyi hedefliyorum.";
@@ -45,24 +89,28 @@ function App() {
 
   const [hovered, setHovered] = useState(false);
 
-  const ref = useRef(null);
-
-
-  const { scrollYProgress: ScrollWord } = useScroll({ target: ref, offset: ["0%", "100%"] });
 
 
 
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [1, 0.3, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.8, 0]);
+
+
+
 
   return (
 
-    <div className="w-[100%] min-h-screen flex flex-col scroll-smooth  bg-a -z-50 font-Poppins">
-
-
+    <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
+      {
+        started
+          ? <img className="min-h-full w-[100vw] absolute" src={bg} alt="background" />  // Burada bg kullanılıyor
+          : <div className="h-screen w-full bg-a absolute z-20"></div>
+      }
 
       {/* Home Section */}
-      <div className='h-screen  !scroll-smooth   flex flex-col '>
+      <div
+
+
+
+        className='h-screen !z-20     flex flex-col '>
 
 
         <Home />
@@ -82,8 +130,9 @@ function App() {
           ref={xDivRef}
           className="  z-10  w-full  h-[90%] overflow-hidden   px-10 "
           style={{
-            opacity,  // Kaydırmaya göre opaklık değişir
-            scale,    // Kaydırmaya göre boyut değişir
+            opacity: o1,  // Kaydırmaya göre opaklık değişir
+            y: y1,   // Kaydırmaya göre boyut değişir
+            scale,
           }}
           initial={{ opacity: 0, scale: 0 }} // Başlangıçta gizli ve küçük
           animate={{ opacity: 1, scale: 1 }}  // Scroll ile görünür ve normal boyuta gelir
@@ -313,17 +362,47 @@ function App() {
       </div >
 
 
-      <div className={`min-h-screen  bg-beyaz text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
+      <motion.div
+
+
+
+
+
+        ref={contentref}
+
+        className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
         {/* Sayfa içeriği */}
 
-        <div className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] rounded-t-4xl" ref={ref}>
-          <motion.div className=" flex flex-col  w-[90%] h-[70%]  gap-10 ">
+
+        <div
+          style={{
+            y: y2,
+          }}
+          initial={{ y: 100, }} // Başlangıçta gizli ve küçük
+          animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
+
+
+          className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] rounded-t-4xl" >
+
+
+          <motion.div
+
+            className=" flex flex-col  w-[90%] h-[70%]  gap-10 ">
+
+            <div
+              ref={ref}
+
+              className='w-[60vw] h-100 bg-amber-300 z-30 absolute opacity-30 -top-90 invisible'
+            >
+
+
+            </div>
             <div className='text-3xl text-beyaz'>Hakkımda</div>
             <div className='text-5xl  max-md:text-2xl  '>
               {words.map((word, index) => {
                 // Her kelime için daha geniş bir scroll aralığı ve daha yumuşak geçiş
                 const opacity = useTransform(
-                  scrollYProgress,
+                  ScrollWord,
                   [
                     0.3 + (index / words.length * 0.6),  // Başlangıç pozisyonu (daha erken)
                     0.4 + (index / words.length * 0.6)   // Bitiş pozisyonu (daha geç)
@@ -355,16 +434,29 @@ function App() {
           </div>
         </div>
 
-
-        <Skills2 />
-
-        <div className='w-full relative'>
-          <hr className='w-[90%]' />
-        </div>
+        <motion.div
 
 
-        <Works />
-      </div>
+          style={{
+            y: y3,
+          }}
+          initial={{ y: 50, }} // Başlangıçta gizli ve küçük
+          animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
+          className='z-20'
+
+        >
+
+
+          <Skills2 />
+          <Works />
+        </motion.div>
+
+
+
+
+
+
+      </motion.div>
 
     </div >
   );

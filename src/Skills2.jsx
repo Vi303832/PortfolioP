@@ -46,7 +46,7 @@ function Skills() {
     ];
 
     return (
-        <div className='min-h-screen w-full bg-a text-beyaz flex justify-center'>
+        <div className='min-h-screen w-full bg-a rounded-t-2xl border-t text-beyaz flex justify-center max-sm:bottom-20 max-sm:relative'>
             <div className='w-[90%] flex flex-col justify-center'>
                 <div className='text-3xl py-10'>Yetenekler</div>
 
@@ -62,47 +62,52 @@ function Skills() {
 }
 
 function SkillComponent({ title, description }) {
-    const ref = useRef(null);
+    const ref2 = useRef(null);
 
     // Her bir bileşen için scroll durumunu al
+    // Offset değerlerini daha erken tetiklenecek şekilde değiştirdik
     const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["0.5 1", "1 1"], // Bileşen ekranın ortasına geldiğinde animasyon başlar
+        target: ref2,
+        offset: ["start end", "center center"],
     });
 
     // Scroll durumuna göre width değerini hesapla
-    const width = useSpring(useTransform(scrollYProgress, [0.5, 1], ["0%", "100%"]), {
-        stiffness: 80, // Animasyon sertliği
-        damping: 30, // Animasyon sönümü
+    // Animasyon eğrisini daha hızlı yanıt verecek şekilde ayarladık
+    const width = useSpring(useTransform(scrollYProgress, [0, 0.6], ["0%", "100%"]), {
+        stiffness: 100, // Animasyon sertliğini artırdık
+        damping: 25, // Sönümlemeyi azalttık
     });
 
     return (
-        <div ref={ref} className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5'>
-            <div className='flex h-full w-full absolute items-center'>
-                <div className='w-full h-full relative'>
-                    {/* Siyah arka plan ve şeffaf yazı */}
-                    <div className='absolute px-2 h-full w-full flex items-center max-xl:text-4xl bg-a'>
-                        <div className='text-transparent' style={{ WebkitTextStroke: '2px white' }}>{title}</div>
-                    </div>
+        <>
+            <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5'>
+                <div className='absolute w-[50vh] h-[50vh] flex items-center justify-center bg-amber-400 z-20 border-t-8 opacity-30 invisible' ref={ref2} />
+                <div className='flex h-full w-full absolute items-center'>
+                    <div className='w-full h-full relative'>
+                        {/* Siyah arka plan ve şeffaf yazı */}
+                        <div className='absolute px-2 h-full w-full flex items-center max-xl:text-4xl bg-a'>
+                            <div className='text-transparent' style={{ WebkitTextStroke: '2px white' }}>{title}</div>
+                        </div>
 
-                    {/* Kaydırmaya bağlı genişleyen renkli div */}
-                    <motion.div
-                        style={{
-                            clipPath: 'polygon(0 0, var(--clip-width) 0, var(--clip-width) 100%, 0 100%)',
-                            ['--clip-width']: width, // width değerini CSS değişkeni olarak kullan
-                        }}
-                        className='absolute px-2 h-full w-full bg-kbeyaz flex items-center max-xl:text-4xl'
-                    >
-                        <div className='text-transparent' style={{ WebkitTextStroke: '2px black' }}>{title}</div>
-                    </motion.div>
+                        {/* Kaydırmaya bağlı genişleyen renkli div */}
+                        <motion.div
+                            style={{
+                                clipPath: 'polygon(0 0, var(--clip-width) 0, var(--clip-width) 100%, 0 100%)',
+                                ['--clip-width']: width, // width değerini CSS değişkeni olarak kullan
+                            }}
+                            className='absolute px-2 h-full w-full bg-kbeyaz flex items-center max-xl:text-4xl'
+                        >
+                            <div className='text-transparent' style={{ WebkitTextStroke: '2px black' }}>{title}</div>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Açıklama */}
+                <div className='text-2xl w-[40%] right-10 absolute h-full flex items-center py-2 text-a'>
+                    <div className='absolute'>{description}</div>
                 </div>
             </div>
-
-            {/* Açıklama */}
-            <div className='text-2xl w-[40%] right-10 absolute h-full flex items-center py-2 text-a'>
-                <div className='absolute'>{description}</div>
-            </div>
-        </div>
+        </>
     );
 }
 

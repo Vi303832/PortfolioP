@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import foto from "./assets/bg1.jpg";
+import bg from "./assets/bg1.jpg";
 
 function Home() {
     return (
@@ -37,7 +38,7 @@ function Home() {
                 }}
                 style={{ overflow: 'hidden' }}
             >
-                <img className="min-h-full object-cover w-[100vw]   -z-10 " src={foto} alt="background" />
+                <img className="min-h-full w-[100vw]  object-cover  " src={bg} alt="background" />
             </motion.div>
         </div>
 
