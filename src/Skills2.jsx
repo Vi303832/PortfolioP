@@ -28,11 +28,12 @@ function Skills() {
     ];
 
     const components = [
-        { id: 1, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
-        { id: 2, title: "BACKEND", description: "Node.js ve Express.js teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
-        { id: 3, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
+        { id: 1, yd: 10, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
+        { id: 2, yd: 130, title: "BACKEND", description: "Node.js ve Express.js teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
+        { id: 3, yd: 140, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
         {
             id: 4,
+            yd: 220,
             title: "TEKNOLOJİLER",
             description: <div className="flex flex-wrap gap-4">
                 {techIcons.map((tech, index) => (
@@ -53,7 +54,7 @@ function Skills() {
                 {/* Bileşenler */}
                 <div className='h-full flex flex-col'>
                     {components.map((component) => (
-                        <SkillComponent key={component.id} title={component.title} description={component.description} />
+                        <SkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
                     ))}
                 </div>
             </div>
@@ -61,7 +62,7 @@ function Skills() {
     );
 }
 
-function SkillComponent({ title, description }) {
+function SkillComponent({ title, description, yd }) {
     const ref2 = useRef(null);
 
     // Her bir bileşen için scroll durumunu al
@@ -73,15 +74,25 @@ function SkillComponent({ title, description }) {
 
     // Scroll durumuna göre width değerini hesapla
     // Animasyon eğrisini daha hızlı yanıt verecek şekilde ayarladık
-    const width = useSpring(useTransform(scrollYProgress, [0, 0.6], ["0%", "100%"]), {
-        stiffness: 100, // Animasyon sertliğini artırdık
-        damping: 25, // Sönümlemeyi azalttık
+    const width = useSpring(useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "100%", "100%"]), {
+        stiffness: 100,
+        damping: 25,
     });
 
     return (
         <>
             <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5'>
-                <div className='absolute w-[50vh] h-[50vh] flex items-center justify-center bg-amber-400 z-20 border-t-8 opacity-30 invisible' ref={ref2} />
+                <div
+                    className='!top-10 absolute'
+                >
+                    <div
+                        className="absolute w-[50vh] h-[50vh] flex items-center justify-center bg-amber-400 z-20 border-t-8 opacity-30 invisible "
+                        style={{ top: `-${yd}px ` }}
+                        ref={ref2}
+                    />
+                </div>
+
+
                 <div className='flex h-full w-full absolute items-center'>
                     <div className='w-full h-full relative'>
                         {/* Siyah arka plan ve şeffaf yazı */}

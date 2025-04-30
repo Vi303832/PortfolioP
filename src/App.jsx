@@ -67,7 +67,7 @@ function App() {
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 600]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const y3 = useTransform(scrollY4Progress, [0, 0.2], [0, -300]);
+  const y3 = useTransform(scrollY4Progress, [0, 0.2], [0, -400]);
 
   {/*
   const y1 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [0, 80, 160, 240, 320, 400]);
@@ -81,7 +81,9 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setstarted(true)
-    }, 6000);
+    }, 100);
+
+    {/*6000 */ }
 
     return () => clearTimeout(timer);
   }, []);
@@ -361,7 +363,7 @@ function App() {
         </motion.div>
       </div >
 
-
+      {/* İçerik DİV */}
       <motion.div
 
 
@@ -373,7 +375,7 @@ function App() {
         className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
         {/* Sayfa içeriği */}
 
-
+        {/* Hakkımda Kısmı */}
         <div
           style={{
             y: y2,
@@ -382,9 +384,9 @@ function App() {
           animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
 
 
-          className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[120vh] rounded-t-4xl" >
+          className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[130vh]  rounded-t-4xl" >
 
-
+          {/* className='w-[60vw] h-150 bg-amber-300 z-30 absolute opacity-30 -top-120  '*/}
           <motion.div
 
             className=" flex flex-col  w-[90%] h-[70%]  gap-10 ">
@@ -392,7 +394,7 @@ function App() {
             <div
               ref={ref}
 
-              className='w-[60vw] h-100 bg-amber-300 z-30 absolute opacity-30 -top-90 invisible'
+              className='w-[60vw] h-150 bg-amber-300 z-30 absolute opacity-30 -top-120 pointer-events-none  '
             >
 
 
@@ -428,19 +430,17 @@ function App() {
 
           </motion.div>
 
-          <div className='h-2 w-[90%] absolute bottom-0 '>
-            <hr></hr>
-            <hr></hr>
-          </div>
+
         </div>
 
+        {/*  Yetenekler Ve Projeler Kısmı */}
         <motion.div
 
 
           style={{
             y: y3,
           }}
-          initial={{ y: 50, }} // Başlangıçta gizli ve küçük
+          initial={{ y: 100, }} // Başlangıçta gizli ve küçük
           animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
           className='z-20'
 
