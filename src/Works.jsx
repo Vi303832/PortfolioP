@@ -48,17 +48,17 @@ const AnimatedProjectCard = ({ project, index }) => {
     return (
         <motion.div
             ref={cardRef}
-            className="w-full border-t border-a py-8 flex flex-col sm:flex-row gap-4 relative"
+            className="w-full border-t border-a py-8   flex flex-col sm:flex-row items-start gap-4 relative"
             variants={cardVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="text-gray-400 text-sm w-12">{String(index + 1).padStart(2, '0')}</div>
+            <div className="text-gray-400 text-sm w-12 ">{String(index + 1).padStart(2, '0')}</div>
 
-            <div className="flex-1">
-                <h3 className="text-4xl font-bold mb-1">{project.title}</h3>
+            <div className="flex-1 ">
+                <h3 className="text-4xl font-bold mb-2 relative bottom-2  ">{project.title}</h3>
                 <p className="text-gray-400 text-sm mb-6">{project.category}</p>
             </div>
 
@@ -74,6 +74,7 @@ const AnimatedProjectCard = ({ project, index }) => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.15 }}
+
                 >
                     <div className="relative w-72 h-48 rounded-lg shadow-lg overflow-hidden">
                         <img
@@ -104,41 +105,41 @@ const Works = () => {
     const projects = [
         {
             id: 1,
-            title: 'MeetMate',
-            category: 'Web Development / Design',
+            title: 'Not Defteri',
+            category: 'Not Alma Uygulaması / MERN Stack (MongoDB, Express, React, Node.js)',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
         },
         {
             id: 2,
-            title: 'fishtrack.',
-            category: 'iOS Development / Product Design',
+            title: 'Kuf',
+            category: 'E-ticaret Platformu / Firebase, Redux Toolkit, Cloudinary, React',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
         },
         {
             id: 3,
-            title: 'TCG-Home',
-            category: 'Web Development',
+            title: 'Sultan',
+            category: 'Yerel İşletme Websitesi / React, Tailwind CSS',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
         },
         {
             id: 4,
-            title: 'Portfolio',
-            category: 'Web Development',
+            title: 'Ekip',
+            category: 'Yerel İşletme Websitesi / React, Tailwind CSS',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
         },
     ];
 
     return (
-        <div className="min-h-screen bg-a font-Poppins text-white flex flex-col items-center p-10 border-t rounded-t-4xl" ref={sectionRef}>
-            <div className="w-full max-w-7xl">
+        <div className="min-h-screen bg-a pb-20  font-Poppins text-white flex flex-col items-center  border-t rounded-t- " ref={sectionRef}>
+            <div className="w-full px-20 ">
                 <motion.h2
-                    className="text-4xl font-bold mb-16"
+                    className="text-6xl font-bold py-24 "
                     style={{ opacity: headerOpacity, y: headerY }}
                 >
-                    Selected Projects
+                    Projeler
                 </motion.h2>
 
-                <div className="flex flex-col gap-10">
+                <div className="flex flex-col gap-20">
                     {projects.map((project, index) => (
                         <AnimatedProjectCard
                             key={project.id}

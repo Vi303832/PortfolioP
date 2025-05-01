@@ -15,6 +15,7 @@ import Skills2 from './Skills2';
 
 import bg from "./assets/bg1.jpg";
 import Contact from './Contact';
+import Footer from './Footer';
 
 
 function App() {
@@ -104,7 +105,7 @@ function App() {
     <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
       {
         started
-          ? <img className="min-h-full w-[100vw] absolute" src={bg} alt="background" />  // Burada bg kullanılıyor
+          ? <div className='bg-[#E1E1E1]  h-full w-full absolute' /> // Burada bg kullanılıyor
           : <div className="h-screen w-full bg-a absolute z-20"></div>
       }
 
@@ -457,6 +458,11 @@ function App() {
         {/* İletişim */}
         <motion.div>
           <Contact />
+        </motion.div>
+
+        {/* Footer */}
+        <motion.div>
+          <Footer />
         </motion.div>
 
 
