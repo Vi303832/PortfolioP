@@ -14,10 +14,10 @@ function Navbar() {
 
     const navItems = [
         { id: 1, label: 'Home' },
-        { id: 2, label: 'About Me' },
-        { id: 3, label: 'Skills' },
-        { id: 4, label: 'Works' },
-        { id: 5, label: 'Contact' }
+        { id: 2, label: 'Hakkımda' },
+        { id: 3, label: 'Yetenekler' },
+        { id: 4, label: 'Projeler' },
+        { id: 5, label: 'İletişim' }
     ];
 
 
@@ -70,16 +70,16 @@ function Navbar() {
                                 Home,
                             </div>
                             <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
-                                About Me,
+                                Hakkımda,
                             </div>
                             <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
-                                Skills,
+                                Yetenekler,
                             </div>
                             <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
-                                Works,
+                                Projeler,
                             </div>
                             <div className={`${open ? " cursor-pointer pointer-events-auto" : " cursor-default pointer-events-none"}`} >
-                                Contact,
+                                İletişim,
                             </div>
 
 
@@ -104,7 +104,7 @@ function Navbar() {
                     <div className='flex text-b gap-2 max-md:hidden  h-full items-center'>
 
                         {navItems.map((item, index) => (
-                            <div key={item.id} className='relative flex w-[80px] h-[15px]'>
+                            <div key={item.id} className='relative flex w-[100px] h-[20px] items-center justify-center'>
                                 <motion.div
                                     onMouseEnter={() => setHoveredIndex(index)}
                                     onMouseLeave={() => setHoveredIndex(null)}

@@ -77,7 +77,7 @@ function App() {
 */}
 
 
-  const aboutText = "Frontend alanında uzmanlaşan bir geliştiriciyim. React, Next.js ve TailwindCSS gibi modern teknolojilerle kullanıcı deneyimi yüksek arayüzler geliştiriyorum. Aynı zamanda Node.js ve Express.js ile backend tarafında da üretken çözümler üretebiliyorum. Yazılım dünyasında öğrenmeye ve üretmeye tutkuyla bağlıyım. Şu anda kendimi geliştirerek sektörde sağlam bir yer edinmeyi hedefliyorum.";
+  const aboutText = " Frontend alanında uzmanlaşan bir geliştiriciyim. React, Next.js ve Tailwind CSS gibi modern teknolojilerle kullanıcı deneyimi yüksek, ölçeklenebilir arayüzler geliştiriyorum.Aynı zamanda Node.js ve Express.js kullanarak backend tarafında da üretken ve sürdürülebilir çözümler geliştiriyorum.Yazılıma tutkuyla bağlıyım. Sürekli öğrenmeye ve üretmeye odaklanarak sektörde sağlam bir yer edinmeyi hedefliyorum."
   const words = aboutText.split(" ");
 
   useEffect(() => {
@@ -214,57 +214,74 @@ function App() {
                     transition={{ duration: 1, delay: 4.5 }}
 
                     className='w-[70%] text-b text-xl relative '>
-                    Modern, kullanıcı odaklı web uygulamaları geliştiriyorum. React ve Node.js teknolojileriyle güçlü çözümler üretiyorum
+                    Modern ve kullanıcı odaklı web uygulamaları geliştiriyorum.
+                    React, Next.js ve Node.js ile hızlı, ölçeklenebilir çözümler üretiyorum.
+
                   </motion.div>
 
-                  <motion.div
+                  <div className='flex gap-5 w-full justify-start items-center max-md:gap-2'>
+
+                    {/*İletişim Butonu*/}
+                    <motion.div
 
 
-                    initial={{
-                      scale: 0,
+                      initial={{
+                        scale: 0,
 
-                    }}
-                    animate={{
+                      }}
+                      animate={{
 
-                      scale: 1,
+                        scale: 1,
 
-                    }}
-                    transition={{ duration: 1, delay: 4.5 }}
-
-
-                    className='w-[30vh] h-[10vh] overflow-hidden rounded-full '>
-                    <div className="relative flex w-full h-full cursor-pointer ">
-                      {/* Üstteki Buton */}
-                      <motion.button
-                        className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer"
-                        onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
-                      >
-                        <div className='z-30 absolute  w-full h-full  top-[35%]'>İletişim</div>
-                      </motion.button>
-
-                      {/* Alttaki Buton */}
-                      <motion.button
-                        className="absolute w-0 h-full bg-[#85856F] text-white  rounded-full"
-                        onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
-                        initial={{
-                          width: "0",
-                          left: "-100px",
-
-                        }}
-                        animate={{
-                          width: hovered ? "100%" : "0",
-                          left: hovered ? "0" : "-100px",
+                      }}
+                      transition={{ duration: 1, delay: 4.5 }}
 
 
-                        }}  // Hover durumuna göre genişlik ayarlanır
-                        transition={{ duration: 1 }}  // 2 saniyelik geçiş süresi
-                      />
+                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full '>
+                      <div className="relative flex w-full h-full cursor-pointer ">
+                        {/* Üstteki Buton */}
+                        <motion.button
+                          className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer"
+                          onMouseEnter={() => setHovered(true)}
+                          onMouseLeave={() => setHovered(false)}
+                        >
+                          <div className='z-30 absolute  w-full h-full  top-[35%]'>İletişim</div>
+                        </motion.button>
+
+                        {/* Alttaki Buton */}
+                        <motion.button
+                          className="absolute w-0 h-full bg-[#85856F] text-white  rounded-full"
+                          onMouseEnter={() => setHovered(true)}
+                          onMouseLeave={() => setHovered(false)}
+                          initial={{
+                            width: "0",
+                            left: "-100px",
+
+                          }}
+                          animate={{
+                            width: hovered ? "100%" : "0",
+                            left: hovered ? "0" : "-100px",
+
+
+                          }}  // Hover durumuna göre genişlik ayarlanır
+                          transition={{ duration: 1 }}  // 2 saniyelik geçiş süresi
+                        />
+                      </div>
+
+                    </motion.div>
+
+
+                    {/* CV Butonu */}
+                    <div
+
+                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full flex justify-center items-center cursor-pointer bg-yellow-700  text-white opacity-80 hidden ' >
+
+
+                      Cv indir
                     </div>
 
-                  </motion.div>
 
+                  </div>
 
 
 
@@ -343,7 +360,7 @@ function App() {
                         transition={{ duration: 1, delay: 4 }}
                         className='relative'
                       >
-                        <span className='text-center flex items-center justify-center'>   (Bridging Design & Development)</span>
+                        <span className='text-center flex items-center justify-center'>   (Frontend Developer)</span>
                       </motion.div>
                     </motion.div>
 

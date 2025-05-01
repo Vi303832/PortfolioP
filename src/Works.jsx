@@ -48,7 +48,7 @@ const AnimatedProjectCard = ({ project, index }) => {
     return (
         <motion.div
             ref={cardRef}
-            className="w-full border-t border-a py-8   flex flex-col sm:flex-row items-start gap-4 relative"
+            className="w-full   py-8    flex flex-col sm:flex-row items-start gap-4 relative"
             variants={cardVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -57,14 +57,14 @@ const AnimatedProjectCard = ({ project, index }) => {
         >
             <div className="text-gray-400 text-sm w-12 ">{String(index + 1).padStart(2, '0')}</div>
 
-            <div className="flex-1 ">
-                <h3 className="text-4xl font-bold mb-2 relative bottom-2  ">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-6">{project.category}</p>
+            <div className="flex-1  ">
+                <h3 className={`text-5xl font-bold mb-2 relative bottom-2 opacity-60 ${isHovered ? "opacity-80" : "opacity-60"}  `}>{project.title}</h3>
+                <p className="text-gray-400  mb-6">{project.category}</p>
             </div>
 
             {isHovered && (
                 <motion.div
-                    className="fixed z-50 pointer-events-none"
+                    className="fixed z-50 pointer-events-none "
                     style={{
                         left: mousePos.x,
                         top: mousePos.y,
@@ -82,7 +82,7 @@ const AnimatedProjectCard = ({ project, index }) => {
                             alt={project.title}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-a/60 to-transparent p-3 rounded-t-lg">
+                        <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-a/60 to-transparent p-3 rounded-t-lg ">
                             <h4 className="text-sm font-medium text-white">{project.title}</h4>
                         </div>
                     </div>
@@ -130,16 +130,16 @@ const Works = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-a pb-20  font-Poppins text-white flex flex-col items-center  border-t rounded-t- " ref={sectionRef}>
+        <div className="min-h-screen bg-a pb-20   font-Poppins text-white flex flex-col items-center  border-t rounded-t-4xl " ref={sectionRef}>
             <div className="w-full px-20 ">
                 <motion.h2
-                    className="text-6xl font-bold py-24 "
+                    className="text-3xl font-bold py-24 "
                     style={{ opacity: headerOpacity, y: headerY }}
                 >
                     Projeler
                 </motion.h2>
 
-                <div className="flex flex-col gap-20">
+                <div className="flex flex-col  gap-20">
                     {projects.map((project, index) => (
                         <AnimatedProjectCard
                             key={project.id}

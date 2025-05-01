@@ -27,8 +27,8 @@ export default function Contact() {
 
                         className="mb-12"
                     >
-                        <p className="text-sm text-gray-400 mb-2 flex justify-center w-full">(Need an unfair advantage?)</p>
-                        <h2 className="text-5xl md:text-6xl font-bold mb-10">BİRLİKTE HAYAL EDELİM</h2>
+                        <p className="text-sm text-gray-400 mb-2 flex justify-center w-full">(Sade, hızlı ve etkili uygulamalar geliştiriyorum.)</p>
+                        <h2 className="text-5xl md:text-6xl font-bold mb-10">SIRADAKİ SİZİN OLABİLİR</h2>
 
                         {/* Button with improved animation */}
                         <div className="flex justify-center">
@@ -45,7 +45,7 @@ export default function Contact() {
                                         onMouseEnter={() => setHovered(true)}
                                         onMouseLeave={() => setHovered(false)}
                                     >
-                                        <div className="z-30 absolute w-full h-full flex items-center justify-center">İletişim</div>
+                                        <div className="z-30 absolute w-full h-full flex items-center justify-center">İletişime Geç</div>
                                     </motion.button>
 
                                     {/* Alttaki Buton */}

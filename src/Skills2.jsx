@@ -11,8 +11,9 @@ import {
     SiJavascript,
     SiExpress,
     SiMongodb,
-    SiFirebase
+
 } from 'react-icons/si';
+import { IoLogoFirebase } from "react-icons/io5";
 
 function Skills() {
     const techIcons = [
@@ -23,13 +24,13 @@ function Skills() {
         { icon: <FaNodeJs className="text-3xl" />, name: "Node.js" },
         { icon: <SiExpress className="text-3xl" />, name: "Express.js" },
         { icon: <SiMongodb className="text-3xl" />, name: "MongoDB" },
-        { icon: <SiFirebase className="text-3xl" />, name: "Firebase" },
+        { icon: <IoLogoFirebase className="text-3xl" />, name: "Firebase" },
         { icon: <FaGithub className="text-3xl" />, name: "Git & GitHub" },
     ];
 
     const components = [
         { id: 1, yd: 10, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
-        { id: 2, yd: 130, title: "BACKEND", description: "Node.js ve Express.js teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
+        { id: 2, yd: 130, title: "BACKEND", description: "Node.js , Express.js ve Firebase teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
         { id: 3, yd: 140, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
         {
             id: 4,
