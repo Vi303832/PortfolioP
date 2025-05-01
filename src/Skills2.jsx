@@ -47,7 +47,7 @@ function Skills() {
     ];
 
     return (
-        <div className='min-h-screen w-full bg-a rounded-t-2xl border-t text-beyaz flex justify-center max-sm:bottom-20 max-sm:relative'>
+        <div className='min-h-screen w-full bg-a rounded-t-4xl border-t text-beyaz flex justify-center max-sm:bottom-20 max-sm:relative'>
             <div className='w-[90%] flex flex-col justify-center'>
                 <div className='text-3xl py-10'>Yetenekler</div>
 
@@ -81,7 +81,7 @@ function SkillComponent({ title, description, yd }) {
 
     return (
         <>
-            <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5'>
+            <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5 pb-40 '>
                 <div
                     className='!top-10 absolute'
                 >

@@ -14,6 +14,7 @@ import { FiArrowDownRight } from "react-icons/fi";
 import Skills2 from './Skills2';
 
 import bg from "./assets/bg1.jpg";
+import Contact from './Contact';
 
 
 function App() {
@@ -65,9 +66,9 @@ function App() {
   const scale = useTransform(scrollYProgress, [0, 0.4, 1], [1, 0.6, 0.6]);
 
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 600]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const y3 = useTransform(scrollY4Progress, [0, 0.2], [0, -400]);
+  const y1 = useTransform(scrollYProgress, [0, 1, 0], [0, 600, 0]);
+  const y2 = useTransform(scrollYProgress, [0, 1, 0], [0, 100, 0]);
+  const y3 = useTransform(scrollY4Progress, [0, 1, 0], [0, -400, 0]);
 
   {/*
   const y1 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [0, 80, 160, 240, 320, 400]);
@@ -364,29 +365,24 @@ function App() {
       </div >
 
       {/* İçerik DİV */}
-      <motion.div
+      <div
 
 
 
 
 
-        ref={contentref}
+
 
         className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
         {/* Sayfa içeriği */}
 
         {/* Hakkımda Kısmı */}
         <div
-          style={{
-            y: y2,
-          }}
-          initial={{ y: 100, }} // Başlangıçta gizli ve küçük
-          animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
 
 
-          className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[130vh]  rounded-t-4xl" >
+          className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[130vh]  rounded-t-4xl pb-40" >
 
-          {/* className='w-[60vw] h-150 bg-amber-300 z-30 absolute opacity-30 -top-120  '*/}
+
           <motion.div
 
             className=" flex flex-col  w-[90%] h-[70%]  gap-10 ">
@@ -433,7 +429,7 @@ function App() {
 
         </div>
 
-        {/*  Yetenekler Ve Projeler Kısmı */}
+        {/*  Yetenekler*/}
         <motion.div
 
 
@@ -442,21 +438,30 @@ function App() {
           }}
           initial={{ y: 100, }} // Başlangıçta gizli ve küçük
           animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
-          className='z-20'
+          className='z-20 '
 
         >
 
 
           <Skills2 />
+
+        </motion.div>
+
+
+        {/* Projeler */}
+        <motion.div>
           <Works />
+        </motion.div>
+
+        {/* İletişim */}
+        <motion.div>
+          <Contact />
         </motion.div>
 
 
 
 
-
-
-      </motion.div>
+      </div>
 
     </div >
   );
