@@ -177,7 +177,7 @@ function App() {
             </div>
 
             {/*Alt Kısım*/}
-            <div className='flex   h-[55vh]   max-md:flex-col  w-full gap-2'>
+            <div className='flex   h-[55vh]   max-md:flex-col  w-full gap-2 '>
               <div className=' w-[50%] max-md:w-full'>
 
 
@@ -373,7 +373,7 @@ function App() {
 
 
 
-        className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins ${started ? "" : "hidden"} `}>
+        className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `}>
         {/* Sayfa içeriği */}
 
         {/* Hakkımda Kısmı */}
@@ -387,10 +387,11 @@ function App() {
 
             className=" flex flex-col  w-[90%] h-[70%]  gap-10 ">
 
+            {/*Home hitbox*/}
             <div
               ref={ref}
 
-              className='w-[60vw] h-150 bg-amber-300 z-30 absolute opacity-30 -top-120 pointer-events-none  '
+              className='w-[60vw] h-150 bg-amber-300 z-30 absolute opacity-30 -top-120 pointer-events-none   invisible'
             >
 
 
@@ -438,7 +439,7 @@ function App() {
           }}
           initial={{ y: 100, }} // Başlangıçta gizli ve küçük
           animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
-          className='z-20 '
+          className='z-20  '
 
         >
 

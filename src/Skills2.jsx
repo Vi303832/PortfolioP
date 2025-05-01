@@ -47,7 +47,7 @@ function Skills() {
     ];
 
     return (
-        <div className='min-h-screen w-full bg-a rounded-t-4xl border-t text-beyaz flex justify-center max-sm:bottom-20 max-sm:relative'>
+        <div className='min-h-screen w-full bg-a rounded-t-4xl border-t text-beyaz flex justify-center max-sm:bottom-20 max-sm:relative overflow-hidden'>
             <div className='w-[90%] flex flex-col justify-center'>
                 <div className='text-3xl py-10'>Yetenekler</div>
 
