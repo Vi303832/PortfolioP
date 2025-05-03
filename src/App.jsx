@@ -10,6 +10,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FiArrowDownRight } from "react-icons/fi";
+import parse from 'html-react-parser';
 
 import Skills2 from './Skills2';
 
@@ -77,7 +78,19 @@ function App() {
 */}
 
 
-  const aboutText = " Frontend alanında uzmanlaşan bir geliştiriciyim. React, Next.js ve Tailwind CSS gibi modern teknolojilerle kullanıcı deneyimi yüksek, ölçeklenebilir arayüzler geliştiriyorum.Aynı zamanda Node.js ve Express.js kullanarak backend tarafında da üretken ve sürdürülebilir çözümler geliştiriyorum.Yazılıma tutkuyla bağlıyım. Sürekli öğrenmeye ve üretmeye odaklanarak sektörde sağlam bir yer edinmeyi hedefliyorum."
+  const aboutText = `
+  <strong>Frontend geliştirme konusunda uzmanlaştım.</strong> 
+  <br/><br/>
+  Aynı zamanda backend tarafında da <strong>gerekli düzeyde teknik bilgiye sahibim</strong>; 
+  projelerde tüm yapıyı anlayarak ilerliyorum.
+  <br/><br/> 
+  Çözüm odaklı, sürdürülebilir ve işlevsel ürünler üretmeye odaklanırım.
+  <br/><br/>
+  <strong>Sorumluluk almayı</strong> ve başladığım işi bitirmeyi önemserim.
+  <br/><br/> 
+  Yazılımı sadece kod değil, işe yarayan ürünler ortaya koymak olarak görüyorum.
+`;
+
   const words = aboutText.split(" ");
 
   useEffect(() => {
@@ -103,6 +116,7 @@ function App() {
   return (
 
     <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
+
       {
         started
           ? <div className='bg-[#E1E1E1]  h-full w-full absolute' /> // Burada bg kullanılıyor
@@ -113,7 +127,7 @@ function App() {
       <div
 
 
-
+        id='home'
         className='h-screen !z-20     flex flex-col '>
 
 
@@ -274,7 +288,7 @@ function App() {
                     {/* CV Butonu */}
                     <div
 
-                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full flex justify-center items-center cursor-pointer bg-yellow-700  text-white opacity-80 hidden ' >
+                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full  justify-center items-center cursor-pointer bg-yellow-700  text-white opacity-80 hidden ' >
 
 
                       Cv indir
@@ -307,29 +321,63 @@ function App() {
 
                 className='w-[50%]  flex gap-2 object-cover  max-md:w-full'>
 
-                <img className='h-full w-[70%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
-                <div className='h-full w-full flex justify-start flex-col gap-5 items-center'>
-                  <motion.div
-                    initial={{
+                <img className='h-full w-[50%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
+                <div className='h-full w-[30%] flex justify-center flex-col  gap-10 items-center'>
 
-                      height: 0
+
+                  <motion.a
+                    initial={{ height: 0 }}
+                    animate={{ height: "10%" }}
+                    transition={{
+                      duration: 1,
+                      delay: 5
                     }}
-                    animate={{
 
-                      height: "70%"
 
+                    href='https://github.com/Vi303832'
+                    target='_blank'>
+                    <FaGithub className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-gray-700 h-full  ' />
+                  </motion.a>
+                  <motion.a
+                    initial={{ height: 0 }}
+                    animate={{ height: "10%" }}
+                    transition={{
+                      duration: 1,
+                      delay: 5
                     }}
 
-                    transition={{ duration: 1, delay: 5 }}
 
-                    className='flex gap-10 flex-col   items-center   '
-                  >
-                    <FaLinkedin className='text-4xl max-xl:text-7xl w-full   h-full  ' />
-                    <FaGithub className='text-4xl max-xl:text-7xl w-full  h-full' />
-                    <FaInstagram className='text-4xl  xl max-xl:text-7xl w-full h-full' />
+                    href=''>
+                    <FaInstagram className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#E1306C]  h-full  ' />
+                  </motion.a>
+                  <motion.a
+                    initial={{ height: 0 }}
+                    animate={{ height: "10%" }}
+                    transition={{
+                      duration: 1,
+                      delay: 5
+                    }}
 
-                    <FaYoutube className='text-4xl max-xl:text-7xl w-full   h-full' />
-                  </motion.div>
+
+                    href='https://www.linkedin.com/in/mehmetakiftanyeri-382458351/'
+                    target='_blank'>
+                    <FaLinkedin className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#0A66C2]  h-full  ' />
+                  </motion.a>
+
+                  <motion.a
+                    initial={{ height: 0 }}
+                    animate={{ height: "10%" }}
+                    transition={{
+                      duration: 1,
+                      delay: 5
+                    }}
+
+
+                    href='https://www.linkedin.com/in/mehmetakiftanyeri-382458351/'
+                    target='_blank'>
+                    <FaYoutube className='text-4xl max-xl:text-7xl w-full   h-full hover:text-[#FE0033]' />
+                  </motion.a>
+
                   <div className='relative h-[30px]  '>
                     <motion.div
 
@@ -360,7 +408,7 @@ function App() {
                         transition={{ duration: 1, delay: 4 }}
                         className='relative'
                       >
-                        <span className='text-center flex items-center justify-center'>   (Frontend Developer)</span>
+                        <span className='text-center flex items-center justify-center '>   (Frontend Developer)</span>
                       </motion.div>
                     </motion.div>
 
@@ -379,7 +427,7 @@ function App() {
 
 
           </div>
-        </motion.div>
+        </motion.div >
       </div >
 
       {/* İçerik DİV */}
@@ -390,8 +438,8 @@ function App() {
 
 
 
-
-        className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `}>
+        className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `
+        }>
         {/* Sayfa içeriği */}
 
         {/* Hakkımda Kısmı */}
@@ -415,7 +463,7 @@ function App() {
 
             </div>
             <div className='text-3xl text-beyaz'>Hakkımda</div>
-            <div className='text-5xl  max-md:text-2xl  '>
+            <div className='text-4xl  max-md:text-2xl  '>
               {words.map((word, index) => {
                 // Her kelime için daha geniş bir scroll aralığı ve daha yumuşak geçiş
                 const opacity = useTransform(

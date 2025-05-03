@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useAnimation, useInView } from 'framer-motion';
+import { FaGithub } from 'react-icons/fa';
 
 // Her bir proje kartı için animasyon bileşeni
 const AnimatedProjectCard = ({ project, index }) => {
@@ -8,6 +9,8 @@ const AnimatedProjectCard = ({ project, index }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const tickingRef = useRef(false);
+
+
 
     // Fare pozisyonu takibi (sadece hover durumunda)
     useEffect(() => {
@@ -46,7 +49,9 @@ const AnimatedProjectCard = ({ project, index }) => {
     };
 
     return (
-        <motion.div
+        <motion.a
+            href={project.live}
+            target='_blank'
             ref={cardRef}
             className="w-full   py-8    flex flex-col sm:flex-row items-start gap-4 relative"
             variants={cardVariants}
@@ -58,7 +63,16 @@ const AnimatedProjectCard = ({ project, index }) => {
             <div className="text-gray-400 text-sm w-12 ">{String(index + 1).padStart(2, '0')}</div>
 
             <div className="flex-1  ">
-                <h3 className={`text-5xl font-bold mb-2 relative bottom-2 opacity-60 ${isHovered ? "opacity-80" : "opacity-60"}  `}>{project.title}</h3>
+                <h3 className={`text-5xl font-bold mb-2 relative bottom-2 opacity-60 flex items-center gap-5 ${isHovered ? "opacity-80" : "opacity-60"}  `}>{project.title} <a
+
+                    href={project.link}
+                    target='_blank'
+                >
+                    <FaGithub
+
+                        className='text-3xl cursor-pointer' />
+
+                </a></h3>
                 <p className="text-gray-400  mb-6">{project.category}</p>
             </div>
 
@@ -88,7 +102,7 @@ const AnimatedProjectCard = ({ project, index }) => {
                     </div>
                 </motion.div>
             )}
-        </motion.div>
+        </motion.a>
     );
 };
 
@@ -108,24 +122,32 @@ const Works = () => {
             title: 'Not Defteri',
             category: 'Not Alma Uygulaması / MERN Stack (MongoDB, Express, React, Node.js)',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
+            link: "https://github.com/Vi303832/CM",
+            live: "",
         },
         {
             id: 2,
             title: 'Kuf',
             category: 'E-ticaret Platformu / Firebase, Redux Toolkit, Cloudinary, React',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
+            link: "https://github.com/Vi303832/EcommerceP",
+            live: "https://kufproject.vercel.app/",
         },
         {
             id: 3,
             title: 'Sultan',
             category: 'Yerel İşletme Websitesi / React, Tailwind CSS',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
+            link: "https://github.com/Vi303832/Sultan",
+            live: "https://sultan-5i3p.vercel.app/",
         },
         {
             id: 4,
             title: 'Ekip',
             category: 'Yerel İşletme Websitesi / React, Tailwind CSS',
             image: 'https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif',
+            link: "https://github.com/Vi303832/EKP",
+            live: "https://ekip-beta.vercel.app/",
         },
     ];
 

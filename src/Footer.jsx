@@ -40,8 +40,10 @@ const Footer = () => {
                     <div>
                         <h3 className="text-xl font-medium mb-4 pb-2 border-b border-gray-300">Socials</h3>
                         <ul className="space-y-3">
-                            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Github</a></li>
-                            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">LinkedIn</a></li>
+                            <li><a href='https://github.com/Vi303832'
+                                target='_blank' rel="noopener noreferrer" className="hover:text-black transition-colors">Github</a></li>
+                            <li><a href='https://www.linkedin.com/in/mehmetakiftanyeri-382458351/'
+                                target='_blank' rel="noopener noreferrer" className="hover:text-black transition-colors">LinkedIn</a></li>
                             <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">YouTube</a></li>
                         </ul>
                     </div>

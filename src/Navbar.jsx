@@ -134,9 +134,9 @@ function Navbar() {
                                         }}
                                         transition={{ duration: 0.2 }}
                                     >
-                                        <div className='z-30 absolute w-full h-full flex justify-center items-center cursor-pointer'>
+                                        <a href={item.label} className='z-30 absolute w-full h-full flex justify-center items-center cursor-pointer'>
                                             {item.label}
-                                        </div>
+                                        </a>
                                     </motion.button>
                                 </motion.div>
                             </div>
