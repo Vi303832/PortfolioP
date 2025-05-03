@@ -50,14 +50,29 @@ function Skills() {
     return (
         <div className='min-h-screen w-full bg-a rounded-t-4xl border-t text-beyaz flex justify-center max-sm:bottom-20 max-sm:relative overflow-hidden'>
             <div className='w-[90%] flex flex-col justify-center'>
-                <div className='text-3xl py-10'>Yetenekler</div>
+                <div className='text-3xl pb-30 pt-20 max-md:pb-10  '>Yetenekler</div>
 
-                {/* Bileşenler */}
-                <div className='h-full flex flex-col'>
+                {/*>md Bileşenler */}
+                <div className='h-full flex flex-col max-md:hidden '>
                     {components.map((component) => (
                         <SkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
                     ))}
                 </div>
+
+                {/*<md Bileşenler */}
+                <div className='h-full hidden max-md:flex flex-col '>
+                    {components.map((component) => (
+                        <MobileSkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
+                    ))}
+                </div>
+
+
+
+
+
+
+
+
             </div>
         </div>
     );
@@ -82,7 +97,8 @@ function SkillComponent({ title, description, yd }) {
 
     return (
         <>
-            <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5 pb-40 '>
+            <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5 pb-40 max-md:hidden '>
+
                 <div
                     className='!top-10 absolute'
                 >
@@ -94,10 +110,11 @@ function SkillComponent({ title, description, yd }) {
                 </div>
 
 
-                <div className='flex max-md:flex-col h-full w-full absolute items-center'>
-                    <div className='w-full h-full relative  '>
+
+                <div className='flex h-full w-full absolute items-center'>
+                    <div className='w-full h-full relative '>
                         {/* Siyah arka plan ve şeffaf yazı */}
-                        <div className='absolute px-2 h-full w-full flex items-center max-xl:text-4xl bg-a '>
+                        <div className='absolute px-2 h-full w-full flex items-center max-xl:text-4xl bg-a'>
                             <div className='text-transparent' style={{ WebkitTextStroke: '2px white' }}>{title}</div>
                         </div>
 
@@ -116,11 +133,83 @@ function SkillComponent({ title, description, yd }) {
 
                 {/* Açıklama */}
                 <div className='text-2xl w-[40%] right-10 absolute h-full flex items-center py-2 text-a'>
-                    <div className='absolute max-md:relative'>{description}</div>
+                    <div className='absolute'>{description}</div>
                 </div>
             </div>
         </>
     );
 }
 
+function MobileSkillComponent({ title, description, yd }) {
+    const ref2 = useRef(null);
+
+    // Her bir bileşen için scroll durumunu al
+    const { scrollYProgress } = useScroll({
+        target: ref2,
+        offset: ["start end", "center center"],
+    });
+
+    // Scroll durumuna göre width değerini hesapla
+    const width = useSpring(useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "100%", "100%"]), {
+        stiffness: 100,
+        damping: 25,
+    });
+
+    // Scroll durumuna göre scale ve opacity değerlerini hesapla
+    const descriptionScale = useSpring(useTransform(scrollYProgress, [0.2, 0.6], [0.9, 1]), {
+        stiffness: 100,
+        damping: 20,
+    });
+
+    const descriptionOpacity = useSpring(useTransform(scrollYProgress, [0.3, 0.7], [0, 1]), {
+        stiffness: 100,
+        damping: 25,
+    });
+
+    return (
+        <div className='relative w-full mb-16' ref={ref2}>
+            {/* Başlık kısmı */}
+            <div className='relative h-auto text-4xl font-bold mb-6'>
+                <div className='absolute px-2 py-3 h-full w-full flex items-start bg-a'>
+                    <div className='text-transparent' style={{ WebkitTextStroke: '1px white' }}>{title}</div>
+                </div>
+
+                {/* Kaydırmaya bağlı genişleyen renkli div */}
+                <motion.div
+                    style={{
+                        clipPath: 'polygon(0 0, var(--clip-width) 0, var(--clip-width) 100%, 0 100%)',
+                        ['--clip-width']: width,
+                    }}
+                    className='absolute px-2 py-3 h-full w-full bg-kbeyaz flex items-start'
+                >
+                    <div className='text-transparent' style={{ WebkitTextStroke: '1px black' }}>{title}</div>
+                </motion.div>
+
+                {/* Görünür olmayan boşluk oluşturucu */}
+                <div className='invisible px-2 py-3'>{title}</div>
+            </div>
+
+            {/* Açıklama bölümü - kaydırmaya bağlı olarak ortaya çıkar */}
+            <motion.div
+                style={{
+                    opacity: descriptionOpacity,
+                    scale: descriptionScale,
+                    transformOrigin: 'left top'
+                }}
+                className='relative ml-4 mt-4 border-l-2 border-kbeyaz pl-4'
+            >
+                <div className='text-lg text-beyaz mb-8'>
+                    {typeof description === 'string' ? (
+                        <p>{description}</p>
+                    ) : (
+                        description
+                    )}
+                </div>
+
+                {/* İnteraktif buton - öğrenme/iletişim için */}
+
+            </motion.div>
+        </div>
+    );
+}
 export default Skills;

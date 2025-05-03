@@ -27,8 +27,8 @@ export default function Contact() {
 
                         className="mb-12"
                     >
-                        <p className="text-sm text-gray-400 mb-2 flex justify-center w-full">(Sade, hızlı ve etkili uygulamalar geliştiriyorum.)</p>
-                        <h2 className="text-5xl md:text-6xl font-bold mb-10">SIRADAKİ SİZİN OLABİLİR</h2>
+                        <p className="text-sm text-gray-400 mb-2 flex justify-center w-full max-md:text-center">(Sade, hızlı ve etkili uygulamalar geliştiriyorum.)</p>
+                        <h2 className="text-5xl md:text-6xl max-md:text-center font-bold mb-10">SIRADAKİ SİZİN OLABİLİR</h2>
 
                         {/* Button with improved animation */}
                         <div className="flex justify-center">
@@ -71,7 +71,7 @@ export default function Contact() {
             </div>
 
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+                <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 overflow-y-scroll">
                     <div className="sm:max-w-[850px] w-full bg-[#131311] text-white rounded-lg shadow-xl overflow-hidden mx-auto my-auto">
                         <div className="flex justify-between items-center p-6 border-b border-gray-700">
                             <h2 className="text-2xl font-bold text-white">İletişim</h2>

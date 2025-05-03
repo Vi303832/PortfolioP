@@ -13,7 +13,7 @@ import { FiArrowDownRight } from "react-icons/fi";
 import parse from 'html-react-parser';
 
 import Skills2 from './Skills2';
-
+import CVModal from './cvModal.jsx';
 import bg from "./assets/bg1.jpg";
 import Contact from './Contact';
 import Footer from './Footer';
@@ -22,7 +22,9 @@ import Footer from './Footer';
 function App() {
 
 
-
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+  const openCVModal = () => setIsCVModalOpen(true);
+  const closeCVModal = () => setIsCVModalOpen(false);
 
 
   let [started, setstarted] = useState(false)
@@ -159,6 +161,7 @@ function App() {
 
 
   const [hovered, setHovered] = useState(false);
+  const [cvHovered, setcvHovered] = useState(false);
 
 
 
@@ -169,14 +172,8 @@ function App() {
 
   return (
 
-    <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
-
-      {
-        started
-          ? ""
-          : <div className="h-screen w-full bg-a absolute z-10"></div>
-      }
-
+    <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-transparent -z-50 font-Poppins">
+      <div className="h-screen w-full bg-a absolute -z-50"></div>
       {/* Home Section */}
       <div
 
@@ -246,7 +243,7 @@ function App() {
             </div>
 
             {/*Alt Kısım*/}
-            <div className='flex   h-[55vh]   max-md:flex-col  w-full gap-2 '>
+            <div className='flex   h-[55vh]    max-md:flex-col  w-full gap-2 '>
               <div className=' w-[50%] max-md:w-full'>
 
 
@@ -338,17 +335,39 @@ function App() {
 
                     </motion.div>
 
-
                     {/* CV Butonu */}
-                    <div
+                    <motion.div
+                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full relative'
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 1, delay: 4.5 }}
+                    >
+                      <div className="relative flex w-full h-full cursor-pointer">
+                        {/* Üstteki Buton */}
+                        <motion.button
+                          className="absolute w-full h-full bg-[#B7950B] text-white rounded-full cursor-pointer"
+                          onMouseEnter={() => setcvHovered(true)}
+                          onMouseLeave={() => setcvHovered(false)}
+                          onClick={openCVModal} // Modalı aç
+                        >
+                          <div className='z-30 absolute w-full h-full top-[35%]'>CV İndir</div>
+                        </motion.button>
 
-                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full  justify-center items-center cursor-pointer bg-yellow-700  text-white opacity-80 hidden ' >
-
-
-                      Cv indir
-                    </div>
-
-
+                        {/* Alttaki Buton */}
+                        <motion.button
+                          className="absolute w-0 h-full bg-[#F1C40F] text-white rounded-full"
+                          onMouseEnter={() => setcvHovered(true)}
+                          onMouseLeave={() => setcvHovered(false)}
+                          initial={{ width: "0", left: "-100px" }}
+                          animate={{
+                            width: cvHovered ? "100%" : "0",
+                            left: cvHovered ? "0" : "-100px",
+                          }}
+                          transition={{ duration: 1 }}
+                          onClick={openCVModal} // Modalı aç
+                        />
+                      </div>
+                    </motion.div>
                   </div>
 
 
@@ -492,7 +511,7 @@ function App() {
 
 
 
-        className={`min-h-screen bg-transparent z-20  text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `
+        className={`min-h-screen bg-[#E1E1E1] z-20   text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `
         }>
         {/* Sayfa içeriği */}
 
@@ -500,7 +519,7 @@ function App() {
         <div
 
 
-          className="h-screen relative flex justify-center flex-col items-center bg-a  max-lg:h-[130vh]  rounded-t-4xl pb-40" >
+          className="h-fit relative flex justify-center flex-col items-center bg-a   max-md:text-lg   rounded-t-4xl pb-40 pt-20" >
 
 
           <motion.div
@@ -517,7 +536,7 @@ function App() {
 
             </div>
             <div className='text-3xl text-beyaz'>Hakkımda</div>
-            <div className="text-[40px] max-md:text-2xl leading-relaxed">
+            <div className="text-[40px] max-md:text-2xl leading-relaxed max-[400px]:!text-xl">
               {renderWords()}
             </div>
 
@@ -560,9 +579,10 @@ function App() {
         {/* Footer */}
         <motion.div>
           <Footer />
+
         </motion.div>
 
-
+        <CVModal isOpen={isCVModalOpen} onClose={closeCVModal} />
 
 
       </div>
