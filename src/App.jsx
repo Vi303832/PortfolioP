@@ -169,12 +169,12 @@ function App() {
 
   return (
 
-    <div className="w-[100%]  max-h-[800px] flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
+    <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
 
       {
         started
-          ? <div className='bg-[#E1E1E1]  h-full w-full absolute' /> // Burada bg kullanılıyor
-          : <div className="h-screen w-full bg-a absolute z-20"></div>
+          ? ""
+          : <div className="h-screen w-full bg-a absolute z-10"></div>
       }
 
       {/* Home Section */}
@@ -182,7 +182,7 @@ function App() {
 
 
         id='home'
-        className='h-full !z-20     flex flex-col '>
+        className='h-screen max-h-[700px] !z-20     flex flex-col '>
 
 
         <Home />
@@ -212,7 +212,7 @@ function App() {
         >
           <div className=' w-full relative h-full   flex flex-col  justify-start font-Poppins '>
 
-            <div className=' text-[13vw] h-[35vh]  max-md:h-[20vh] max-md:text-[20vw]  w-full overflow-hidden    flex justify-start items-start'>
+            <div className=' text-[13vw] h-[35vh]  max-md:h-fit max-md:text-[20vw]  w-full overflow-hidden    flex justify-start items-start'>
               <motion.div>
                 <motion.div
 
@@ -492,7 +492,7 @@ function App() {
 
 
 
-        className={`min-h-screen bg-transparent z-20 text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `
+        className={`min-h-screen bg-transparent z-20  text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `
         }>
         {/* Sayfa içeriği */}
 

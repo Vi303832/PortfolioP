@@ -38,7 +38,8 @@ function Home() {
                 }}
                 style={{ overflow: 'hidden' }}
             >
-                <img className="min-h-full w-[100vw]  object-cover  " src={bg} alt="background" />
+
+                <div className='min-h-full w-[100vw] bg-[#E1E1E1] ' />
             </motion.div>
         </div>
 

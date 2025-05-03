@@ -94,10 +94,10 @@ function SkillComponent({ title, description, yd }) {
                 </div>
 
 
-                <div className='flex h-full w-full absolute items-center'>
-                    <div className='w-full h-full relative'>
+                <div className='flex max-md:flex-col h-full w-full absolute items-center'>
+                    <div className='w-full h-full relative  '>
                         {/* Siyah arka plan ve şeffaf yazı */}
-                        <div className='absolute px-2 h-full w-full flex items-center max-xl:text-4xl bg-a'>
+                        <div className='absolute px-2 h-full w-full flex items-center max-xl:text-4xl bg-a '>
                             <div className='text-transparent' style={{ WebkitTextStroke: '2px white' }}>{title}</div>
                         </div>
 
@@ -116,7 +116,7 @@ function SkillComponent({ title, description, yd }) {
 
                 {/* Açıklama */}
                 <div className='text-2xl w-[40%] right-10 absolute h-full flex items-center py-2 text-a'>
-                    <div className='absolute'>{description}</div>
+                    <div className='absolute max-md:relative'>{description}</div>
                 </div>
             </div>
         </>
