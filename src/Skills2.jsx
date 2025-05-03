@@ -30,7 +30,7 @@ function Skills() {
 
     const components = [
         { id: 1, yd: 10, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
-        { id: 2, yd: 130, title: "BACKEND", description: "Node.js , Express.js ve Firebase teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
+        { id: 2, yd: 130, title: "BACKEND", description: "Node.js , Express.js ve Firebase  teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB ve Firestore gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
         { id: 3, yd: 140, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
         {
             id: 4,

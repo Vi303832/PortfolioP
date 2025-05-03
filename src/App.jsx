@@ -79,19 +79,73 @@ function App() {
 
 
   const aboutText = `
-  <strong>Frontend geliştirme konusunda uzmanlaştım.</strong> 
-  <br/><br/>
-  Aynı zamanda backend tarafında da <strong>gerekli düzeyde teknik bilgiye sahibim</strong>; 
-  projelerde tüm yapıyı anlayarak ilerliyorum.
-  <br/><br/> 
+  
+  <strong>Frontend geliştirme </strong>konusunda <strong>uzmanlaştım.</strong><br/>
+  Aynı zamanda <strong>backend</strong>  tarafında da  <strong>gerekli düzeyde</strong> teknik bilgiye sahibim;
+  projelerde tüm yapıyı anlayarak ilerliyorum.<br/>
   Çözüm odaklı, sürdürülebilir ve işlevsel ürünler üretmeye odaklanırım.
-  <br/><br/>
-  <strong>Sorumluluk almayı</strong> ve başladığım işi bitirmeyi önemserim.
-  <br/><br/> 
+  <strong>Sorumluluk</strong> almayı ve başladığım <strong>işi bitirmeyi önemserim.</strong>
   Yazılımı sadece kod değil, işe yarayan ürünler ortaya koymak olarak görüyorum.
 `;
 
-  const words = aboutText.split(" ");
+  const renderWords = () => {
+    const elements = [];
+    let wordIndex = 0;
+
+    // Parse edilen nodları işle
+    parse(aboutText).forEach((node, nodeIndex) => {
+      if (typeof node === 'string') {
+        // String içindeki kelimeleri ayır
+        node.split(' ').forEach((word, i) => {
+          if (word.trim() !== '') {
+            const opacity = useTransform(
+              ScrollWord,
+              [0.3 + (wordIndex / 100 * 0.6), 0.4 + (wordIndex / 100 * 0.6)],
+              [0.1, 1]
+            );
+
+            elements.push(
+              <motion.span
+                key={`word-${wordIndex}`}
+                style={{ opacity }}
+                transition={{ duration: 0.3 }}
+                className="inline-block mr-1.5 my-1 whitespace-nowrap"
+              >
+                {word}
+              </motion.span>
+            );
+            wordIndex++;
+          }
+        });
+      } else if (node.type === 'strong') {
+        // Strong tagları
+        const opacity = useTransform(
+          ScrollWord,
+          [0.3 + (wordIndex / 100 * 0.6), 0.4 + (wordIndex / 100 * 0.6)],
+          [0.1, 1]
+        );
+
+        elements.push(
+          <motion.span
+            key={`strong-${wordIndex}`}
+            style={{ opacity }}
+            transition={{ duration: 0.3 }}
+            className="inline-block font-bold text-[#85856F] mr-1.5 whitespace-nowrap"
+          >
+            {node.props.children}
+          </motion.span>
+        );
+        wordIndex++;
+      } else if (node.type === 'br') {
+        // BR tagları için satır atlama
+        elements.push(<br key={`br-${nodeIndex}`} className="my-4" />);
+      }
+    });
+
+    return elements;
+  };
+
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -115,7 +169,7 @@ function App() {
 
   return (
 
-    <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
+    <div className="w-[100%]  max-h-[800px] flex flex-col !scroll-smooth  bg-a -z-50 font-Poppins">
 
       {
         started
@@ -128,7 +182,7 @@ function App() {
 
 
         id='home'
-        className='h-screen !z-20     flex flex-col '>
+        className='h-full !z-20     flex flex-col '>
 
 
         <Home />
@@ -158,7 +212,7 @@ function App() {
         >
           <div className=' w-full relative h-full   flex flex-col  justify-start font-Poppins '>
 
-            <div className=' text-[13vw] h-[35vh]    w-full overflow-hidden    flex justify-start items-start'>
+            <div className=' text-[13vw] h-[35vh]  max-md:h-[20vh] max-md:text-[20vw]  w-full overflow-hidden    flex justify-start items-start'>
               <motion.div>
                 <motion.div
 
@@ -196,7 +250,7 @@ function App() {
               <div className=' w-[50%] max-md:w-full'>
 
 
-                <div className='flex flex-col max-md:hidden  gap-5 w-full  justify-start items-start '>
+                <div className='flex flex-col  gap-5 w-full  justify-start items-start '>
                   <motion.div
 
                     initial={{
@@ -227,13 +281,13 @@ function App() {
                     }}
                     transition={{ duration: 1, delay: 4.5 }}
 
-                    className='w-[70%] text-b text-xl relative '>
+                    className='w-[70%] text-b text-xl relative max-md:w-full'>
                     Modern ve kullanıcı odaklı web uygulamaları geliştiriyorum.
                     React, Next.js ve Node.js ile hızlı, ölçeklenebilir çözümler üretiyorum.
 
                   </motion.div>
 
-                  <div className='flex gap-5 w-full justify-start items-center max-md:gap-2'>
+                  <div className='flex gap-5 w-full justify-start items-center max-md:gap-2 '>
 
                     {/*İletişim Butonu*/}
                     <motion.div
@@ -319,7 +373,7 @@ function App() {
                 transition={{ duration: 1, delay: 5 }}
 
 
-                className='w-[50%]  flex gap-2 object-cover  max-md:w-full'>
+                className='w-[50%]  flex gap-2 object-cover  max-md:hidden'>
 
                 <img className='h-full w-[50%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
                 <div className='h-full w-[30%] flex justify-center flex-col  gap-10 items-center'>
@@ -457,36 +511,14 @@ function App() {
             <div
               ref={ref}
 
-              className='w-[60vw] h-150 bg-amber-300 z-30 absolute opacity-30 -top-120 pointer-events-none   invisible'
+              className='w-[60vw] h-250 bg-amber-300 z-30 absolute opacity-30 -top-150 pointer-events-none   invisible'
             >
 
 
             </div>
             <div className='text-3xl text-beyaz'>Hakkımda</div>
-            <div className='text-4xl  max-md:text-2xl  '>
-              {words.map((word, index) => {
-                // Her kelime için daha geniş bir scroll aralığı ve daha yumuşak geçiş
-                const opacity = useTransform(
-                  ScrollWord,
-                  [
-                    0.3 + (index / words.length * 0.6),  // Başlangıç pozisyonu (daha erken)
-                    0.4 + (index / words.length * 0.6)   // Bitiş pozisyonu (daha geç)
-                  ],
-                  [0.1, 1]  // Tamamen görünmezden tamamen görünüre
-                );
-
-                return (
-                  <motion.span
-                    key={index}
-                    style={{ opacity }}
-                    className="inline-block  mr-2 my-1 whitespace-nowrap "
-                    transition={{ duration: 0.5 }}  // Daha yavaş geçiş için
-                  >
-                    {word}
-                  </motion.span>
-                );
-              })}
-
+            <div className="text-[40px] max-md:text-2xl leading-relaxed">
+              {renderWords()}
             </div>
 
 

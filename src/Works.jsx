@@ -68,9 +68,9 @@ const AnimatedProjectCard = ({ project, index }) => {
                     href={project.link}
                     target='_blank'
                 >
-                    <FaGithub
+                    <span className='flex items-end gap-5 justify-center text-sm font-light p-2 text-a hover:text-white '> <FaGithub
 
-                        className='text-3xl cursor-pointer' />
+                        className='text-3xl cursor-pointer text-white ' />(Click to see repo)</span>
 
                 </a></h3>
                 <p className="text-gray-400  mb-6">{project.category}</p>
