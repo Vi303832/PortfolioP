@@ -22,7 +22,7 @@ export default function Contact() {
 
             {/* Hero Section with dark background */}
             <div className="w-full bg-[#131311] text-white py-32 rounded-lg">
-                <div className="max-w-4xl flex items-center justify-center mx-auto   ">
+                <div className="max-w-4xl flex items-center justify-center mx-auto    ">
                     <motion.div
 
                         className="mb-12"
@@ -31,26 +31,26 @@ export default function Contact() {
                         <h2 className="text-5xl md:text-6xl max-md:text-center font-bold mb-10">SIRADAKİ SİZİN OLABİLİR</h2>
 
                         {/* Button with improved animation */}
-                        <div className="flex justify-center">
+                        <div className="flex justify-center cursor-pointer ">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.6, ease: "easeOut" }}
-                                className="w-[30vh] h-[10vh] overflow-hidden rounded-full"
+                                className="w-[30vh] h-[10vh] overflow-hidden rounded-full cursor-pointer"
                             >
                                 <div className="relative flex w-full h-full cursor-pointer" onClick={() => setIsModalOpen(true)}>
                                     {/* Üstteki Buton */}
                                     <motion.button
-                                        className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer flex items-center justify-center"
+                                        className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer flex items-center justify-center "
                                         onMouseEnter={() => setHovered(true)}
                                         onMouseLeave={() => setHovered(false)}
                                     >
-                                        <div className="z-30 absolute w-full h-full flex items-center justify-center">İletişime Geç</div>
+                                        <div className="z-30 absolute w-full h-full flex items-center justify-center cursor-pointer">İletişime Geç</div>
                                     </motion.button>
 
                                     {/* Alttaki Buton */}
                                     <motion.button
-                                        className="absolute h-full bg-[#85856F] text-white rounded-full"
+                                        className="absolute h-full bg-[#85856F] text-white rounded-full cursor-pointer"
                                         onMouseEnter={() => setHovered(true)}
                                         onMouseLeave={() => setHovered(false)}
                                         initial={{

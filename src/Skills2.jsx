@@ -48,9 +48,9 @@ function Skills() {
     ];
 
     return (
-        <div className='min-h-screen w-full   rounded-t-4xl border-t-2 border-white text-beyaz flex justify-center    '>
+        <div className='min-h-screen w-full   rounded-t-4xl border-t  text-beyaz flex justify-center    '>
 
-            <div className='w-full   flex flex-col justify-center z-10 bg-a min-md:px-20 px-5 rounded-t-4xl border-t-2 border-white pb-20 '>
+            <div className='w-full   flex flex-col justify-center z-10 bg-a min-md:px-20 px-5 rounded-t-4xl border-t border-white pb-20 max-md:pb-30 '>
                 <div className='text-3xl pb-30 pt-20 max-md:pb-10    '>Yetenekler</div>
 
                 {/*>md Bileşenler */}

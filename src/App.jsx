@@ -168,7 +168,7 @@ function App() {
         <Home />
 
         <motion.div
-          className="z-30 w-full relative"
+          className="z-50 w-full relative"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 3, duration: 1 }}
@@ -378,10 +378,12 @@ function App() {
         >
           <motion.div className="flex flex-col w-[90%] h-[70%] gap-10">
             {/* ScrollWords reference */}
+
             <div
               ref={scrollWordsRef}
-              className='w-[60vw] h-250 z-30 absolute -top-150 pointer-events-none invisible'
+              className='w-[60vw] h-280 z-30 absolute -top-150 pointer-events-none max-md:h-400  opacity-30 '
             />
+
             <div className='text-3xl text-beyaz'>Hakkımda</div>
             <div className="text-[40px] max-md:text-2xl leading-relaxed max-[400px]:!text-xl">
               {renderWords()}

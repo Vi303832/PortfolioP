@@ -31,7 +31,7 @@ function Navbar() {
         <div className='relative'>
             <AnimatePresence>
                 {open && (
-                    <div className="min-md:hidden fixed inset-0 z-30 pointer-events-none">
+                    <div className="min-md:hidden fixed inset-0 !z-30 pointer-events-none">
                         <motion.div
                             className="bg-b absolute top-5 right-10"
                             initial={{ height: 40, width: 40, borderRadius: "50%" }}
