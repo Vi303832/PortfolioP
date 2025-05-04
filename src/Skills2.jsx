@@ -56,7 +56,7 @@ function Skills() {
                     className='text-3xl pb-10 pt-20   '>Yetenekler</div>
 
                 {/*>md Bileşenler */}
-                <div className='h-full flex flex-col max-[900px]:hidden w-full '>
+                <div className='h-full flex flex-col max-[1200px]:hidden w-full '>
                     {components.map((component) => (
                         <SkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
                     ))}
