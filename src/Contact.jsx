@@ -7,7 +7,7 @@ export default function Contact() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div className="min-h-screen w-full flex flex-col px-6 md:px-10 lg:px-16 pb-24 bg-[#E1E1E1] overflow-hidden  text-a ">
+        <div className="min-h-screen w-full flex flex-col px-6 md:px-10 lg:px-16 pb-24 bg-[#E1E1E1] overflow-hidden  text-a  z-100 max-md:pt-80   " >
             {/* İletişim Header - Left aligned with reduced height */}
             <div className="w-full relative min-h-[30vh] flex flex-col justify-center items-start font-Poppins my-10">
                 <div className="text-[13vw] w-full overflow-hidden flex justify-start items-center">

@@ -10,7 +10,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FiArrowDownRight } from "react-icons/fi";
 import parse from 'html-react-parser';
-
+import TransitionSection from './transaction.jsx';
 import Skills2 from './Skills2';
 import CVModal from './cvModal.jsx';
 import Contact from './Contact';
@@ -154,7 +154,12 @@ function App() {
       {/* Home Section with Parallax */}
       <motion.div
 
-        style={{ y: homeParallax, }}
+        style={{
+          y: homeParallax,
+
+
+
+        }}
 
         id='home'
         className='h-screen max-h-[700px] !z-20 flex flex-col'
@@ -171,7 +176,11 @@ function App() {
           <Navbar />
         </motion.div>
 
-        <div className="!z-30 w-full h-[90%] overflow-hidden px-10">
+        <div
+
+
+
+          className="!z-30 w-full h-[90%] overflow-hidden px-10">
           <div className='w-full relative h-full flex flex-col justify-start font-Poppins'>
             <div className='text-[13vw] h-[35vh] max-md:h-fit max-md:text-[20vw] w-full overflow-hidden flex justify-start items-start'>
               <motion.div>
@@ -353,6 +362,7 @@ function App() {
             </div>
           </div>
         </div>
+
       </motion.div>
 
 
@@ -392,18 +402,35 @@ function App() {
         <motion.div
           ref={worksRef}
           style={{ y: worksParallax }}
+
         >
           <Works />
-          <div className='w-full h-[50vh] flex  fixed  items-center justify-center    '>
+          {/* Ara GEÇİŞ 
+          <div className='w-full h-[50vh]  flex  fixed  items-center max-md:hidden  justify-center text-center    '>
             (Sıradaki işbirliği neden sizinle olmasın?)
           </div>
+          <div className="w-full relative   flex-col justify-center items-start font-Poppins my-10 hidden max-md:flex text-a ">
+            <div className="text-[13vw] w-full overflow-hidden flex justify-start items-center">
+              <motion.div
+
+                className="flex items-center justify-start gap-10 font-bold w-full tracking-wide max-xl:gap-5 flex-nowrap max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0  "
+              >
+                <div>İLETİŞİM</div>
+              </motion.div>
+            </div>
+          </div>*/}
+          <motion.div>
+            <TransitionSection />
+          </motion.div>
 
         </motion.div>
+
+        {/* Ara GEÇİŞ - Yeni eklenen bölüm */}
 
 
 
         {/* İletişim */}
-        <motion.div>
+        <motion.div className=''>
           <Contact />
         </motion.div>
 
