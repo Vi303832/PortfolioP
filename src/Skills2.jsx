@@ -50,20 +50,20 @@ function Skills() {
     return (
         <div className='min-h-screen w-full   rounded-t-4xl border-t  text-beyaz flex justify-center    '>
 
-            <div className='w-full   flex flex-col justify-center z-10 bg-a min-md:px-20 px-5 rounded-t-4xl border-t border-white pb-20 max-md:pb-30 '>
+            <div className='w-full   flex flex-col justify-center z-10 bg-a min-md:px-20 px-5 rounded-t-4xl border-t border-white pb-20 max-[900px]:pb-30  '>
                 <div
                     id='Yetenekler'
                     className='text-3xl pb-10 pt-20   '>Yetenekler</div>
 
                 {/*>md Bileşenler */}
-                <div className='h-full flex flex-col max-md:hidden w-full '>
+                <div className='h-full flex flex-col max-[900px]:hidden w-full '>
                     {components.map((component) => (
                         <SkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
                     ))}
                 </div>
 
                 {/*<md Bileşenler */}
-                <div className='h-full hidden max-md:flex flex-col '>
+                <div className='h-full hidden max-[900px]:flex flex-col '>
                     {components.map((component) => (
                         <MobileSkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
                     ))}

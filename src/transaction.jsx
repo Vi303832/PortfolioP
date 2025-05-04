@@ -42,14 +42,14 @@ export default function TransitionSection() {
                 {/* Decorative elements */}
                 <motion.div
                     style={{ opacity }}
-                    className="absolute top-5 right-5 md:top-10 md:right-40"
+                    className="absolute top-5 right-5 md:top-10 md:right-40  max-[1200px]:hidden  max-sm:block"
                 >
                     <FiArrowDownRight className="text-4xl md:text-5xl text-[#3B3835] opacity-30" />
                 </motion.div>
 
                 <motion.div
                     style={{ opacity }}
-                    className="absolute bottom-5 left-5 md:bottom-10 md:left-40"
+                    className="absolute bottom-5 left-5 md:bottom-10 md:left-40 max-[1200px]:hidden  max-sm:block"
                 >
                     <FiArrowDownRight className="text-4xl md:text-5xl text-[#3B3835] opacity-30" />
                 </motion.div>
@@ -57,18 +57,18 @@ export default function TransitionSection() {
                 {/* Main content */}
                 <motion.div
                     style={{ scale }}
-                    className="flex flex-col items-center justify-center text-center"
+                    className="flex flex-col items-center justify-center text-center max-[1200px]:relative max-md:bottom-0  max-[1200px]:bottom-15 "
                 >
                     <motion.h2
                         style={{ y: yText, opacity }}
-                        className="text-3xl md:text-6xl font-bold text-[#3B3835] mb-6 md:mb-8"
+                        className="text-3xl md:text-6xl font-bold text-[#3B3835] mb-6 md:mb-8 lg:text-2xl"
                     >
                         Sıradaki işbirliği neden sizinle olmasın?
                     </motion.h2>
 
                     <motion.p
                         style={{ y: yText, opacity, transition: { delay: 0.2 } }}
-                        className="text-lg md:text-2xl text-[#3B3835] max-w-2xl mb-8 md:mb-12"
+                        className="text-lg md:text-2xl text-[#3B3835] max-w-2xl mb-8 md:mb-12 lg:text-xl"
                     >
                         Fikirlerinizi hayata geçirmek için modern ve kullanıcı dostu çözümler üretebiliriz.
                     </motion.p>
