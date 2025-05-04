@@ -14,8 +14,8 @@ export default function TransitionSection() {
     });
 
     // Transform values based on scroll position
-    const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-    const yText = useTransform(scrollYProgress, [0, 0.2], [100, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+    const yText = useTransform(scrollYProgress, [0, 0.7], [100, 0]);
     const scale = useTransform(scrollYProgress, [0, 0.7], [0.8, 1]);
 
     useEffect(() => {

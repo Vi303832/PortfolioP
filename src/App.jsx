@@ -41,24 +41,16 @@ function App() {
     offset: ["start start", "end end"],
   });
 
-
   const { scrollYProgress: homeProgress } = useScroll({
     target: homeRef,
     offset: ["start ", " end"],
   });
 
-
-  const homeParallax = useTransform(scrollYProgress, [0, 0.3, 0.4], [0, 800, 0]);
-
-
-  const aboutParallax = useTransform(scrollYProgress, [0.1, 0.4, 0.5], [0, 100, 0]);
-
-  const skillsParallax = useTransform(scrollYProgress, [0.1, 0.7, 0.8], [0, -600, 0]);
-
-
-  const worksParallax = useTransform(scrollYProgress, [0.3, 0.6, 0.7], [0, -1200, 0]);
-
-
+  // Parallax etkileri - yumuşak ve daha az şiddetli
+  const homeParallax = useTransform(scrollYProgress, [0, 0.3, 0.4], [0, 500, 0]);
+  const aboutParallax = useTransform(scrollYProgress, [0.1, 0.4, 0.5], [0, 80, 0]);
+  const skillsParallax = useTransform(scrollYProgress, [0.1, 0.7, 0.8], [0, -400, 0]);
+  const worksParallax = useTransform(scrollYProgress, [0.3, 0.6, 0.7], [0, -800, 0]);
 
   // For the words animation in About section - keeping the ScrollWord functionality
   const { scrollYProgress: ScrollWord } = useScroll({
@@ -153,18 +145,13 @@ function App() {
 
       {/* Home Section with Parallax */}
       <motion.div
-
+        ref={homeRef}
         style={{
           y: homeParallax,
-
-
-
         }}
-
         id='home'
         className='h-screen max-h-[700px] !z-20 flex flex-col'
       >
-
         <Home />
 
         <motion.div
@@ -176,11 +163,7 @@ function App() {
           <Navbar />
         </motion.div>
 
-        <div
-
-
-
-          className="!z-30 w-full h-[90%] overflow-hidden px-10">
+        <div className="!z-30 w-full h-[90%] overflow-hidden px-10">
           <div className='w-full relative h-full flex flex-col justify-start font-Poppins'>
             <div className='text-[13vw] h-[35vh] max-md:h-fit max-md:text-[20vw] w-full overflow-hidden flex justify-start items-start'>
               <motion.div>
@@ -362,14 +345,10 @@ function App() {
             </div>
           </div>
         </div>
-
       </motion.div>
-
-
 
       {/* Content Section with Parallax */}
       <div className={`min-h-screen bg-[#E1E1E1] z-20 text-kbeyaz font-Poppins ${started ? "" : "hidden"}`}>
-
         {/* Hakkımda Section with Parallax */}
         <motion.div
           ref={aboutRef}
@@ -378,10 +357,9 @@ function App() {
         >
           <motion.div className="flex flex-col w-[90%] h-[70%] gap-10">
             {/* ScrollWords reference */}
-
             <div
               ref={scrollWordsRef}
-              className='w-[60vw] h-280 z-30 absolute -top-150 pointer-events-none max-md:h-400  opacity-30 '
+              className='w-[60vw] h-280 z-30 absolute -top-150 pointer-events-none max-md:h-400  opacity-30'
             />
 
             <div className='text-3xl text-beyaz'>Hakkımda</div>
@@ -400,36 +378,19 @@ function App() {
           <Skills2 />
         </motion.div>
 
-        {/* Projeler Section with Parallax */}
+        {/* Projeler Section with Parallax - worksRef ekleme */}
         <motion.div
           ref={worksRef}
           style={{ y: worksParallax }}
-
+          className="relative works-container"
         >
           <Works />
-          {/* Ara GEÇİŞ 
-          <div className='w-full h-[50vh]  flex  fixed  items-center max-md:hidden  justify-center text-center    '>
-            (Sıradaki işbirliği neden sizinle olmasın?)
-          </div>
-          <div className="w-full relative   flex-col justify-center items-start font-Poppins my-10 hidden max-md:flex text-a ">
-            <div className="text-[13vw] w-full overflow-hidden flex justify-start items-center">
-              <motion.div
 
-                className="flex items-center justify-start gap-10 font-bold w-full tracking-wide max-xl:gap-5 flex-nowrap max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0  "
-              >
-                <div>İLETİŞİM</div>
-              </motion.div>
-            </div>
-          </div>*/}
-          <motion.div>
+          {/* TransitionSection artık sabit pozisyonlu değil */}
+          <motion.div className="relative min-md:pt-15">
             <TransitionSection />
           </motion.div>
-
         </motion.div>
-
-        {/* Ara GEÇİŞ - Yeni eklenen bölüm */}
-
-
 
         {/* İletişim */}
         <motion.div className=''>
