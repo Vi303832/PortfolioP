@@ -212,7 +212,7 @@ const Works = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-a pb-10 md:pb-20 font-Poppins text-white flex flex-col items-center border-t rounded-t-4xl" ref={sectionRef}>
+        <div className="min-h-screen bg-a pb-10 max-md:pb-0 font-Poppins text-white flex flex-col items-center border-t rounded-t-4xl" ref={sectionRef}>
             <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20">
                 <motion.h2
                     className='text-3xl pt-20 pb-10 !opacity-80 px-1 '

@@ -53,10 +53,10 @@ function App() {
 
   const aboutParallax = useTransform(scrollYProgress, [0.1, 0.4, 0.5], [0, 100, 0]);
 
-  const skillsParallax = useTransform(scrollYProgress, [0.1, 0.7, 0.8], [0, -450, 0]);
+  const skillsParallax = useTransform(scrollYProgress, [0.1, 0.7, 0.8], [0, -600, 0]);
 
 
-  const worksParallax = useTransform(scrollYProgress, [0.3, 0.6, 0.7], [0, -850, 0]);
+  const worksParallax = useTransform(scrollYProgress, [0.3, 0.6, 0.7], [0, -1200, 0]);
 
 
 
