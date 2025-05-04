@@ -179,10 +179,34 @@ export default function Contact() {
                                                 Sosyal Medya
                                             </h3>
                                             <div className="flex space-x-5 pl-1">
-                                                <FaLinkedin className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
-                                                <FaGithub className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
-                                                <FaInstagram className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
-                                                <FaYoutube className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
+                                                <a
+                                                    href="https://www.linkedin.com/in/mehmetakiftanyeri-382458351/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <FaLinkedin className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
+                                                </a>
+                                                <a
+                                                    href="https://github.com/Vi303832"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <FaGithub className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
+                                                </a>
+                                                <a
+                                                    href="https://www.instagram.com/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <FaInstagram className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
+                                                </a>
+                                                <a
+                                                    href="https://youtube.com"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <FaYoutube className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
