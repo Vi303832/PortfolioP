@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import Navbar from './Navbar';
-import foto from "./assets/bg1.jpg";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Home from './Home';
 import Works from './Works';
@@ -14,71 +13,58 @@ import parse from 'html-react-parser';
 
 import Skills2 from './Skills2';
 import CVModal from './cvModal.jsx';
-import bg from "./assets/bg1.jpg";
 import Contact from './Contact';
 import Footer from './Footer';
 
 
 function App() {
-
-
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const openCVModal = () => setIsCVModalOpen(true);
   const closeCVModal = () => setIsCVModalOpen(false);
 
+  let [started, setstarted] = useState(false);
 
-  let [started, setstarted] = useState(false)
+  // Main container reference for parallax scrolling
+  const mainContainerRef = useRef(null);
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const skillsRef = useRef(null);
+  const worksRef = useRef(null);
+  const contentRef = useRef(null);
 
+  // Reference for ScrollWords effect - keeping this as requested
+  const scrollWordsRef = useRef(null);
 
-  const xDivRef = useRef(null);
-  const contentref = useRef(null);
-
-  const ref = useRef(null);
-  const ref4 = useRef(null);
-
+  // Main scroll progress
   const { scrollYProgress } = useScroll({
-    target: xDivRef, // Scroll pozisyonunu X DİV için takip et
-    offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
-  });
-
-
-
-  const { scrollYProgress: scrollY2Progress } = useScroll({
-    target: xDivRef,
+    target: mainContainerRef,
     offset: ["start start", "end end"],
   });
 
-  const { scrollYProgress: scrollY3Progress } = useScroll({
-    target: ref, // Scroll pozisyonunu X DİV için takip et
-    offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
+
+  const { scrollYProgress: homeProgress } = useScroll({
+    target: homeRef,
+    offset: ["start ", " end"],
   });
 
 
-  const { scrollYProgress: scrollY4Progress } = useScroll({
-    target: contentref, // Scroll pozisyonunu X DİV için takip et
-    offset: ["0%", "100%"], /// Scroll başlangıcından bitişine kadar
+  const homeParallax = useTransform(scrollYProgress, [0, 0.3, 0.4], [0, 800, 0]);
+
+
+  const aboutParallax = useTransform(scrollYProgress, [0.1, 0.4, 0.5], [0, 100, 0]);
+
+  const skillsParallax = useTransform(scrollYProgress, [0.1, 0.7, 0.8], [0, -450, 0]);
+
+
+  const worksParallax = useTransform(scrollYProgress, [0.3, 0.6, 0.7], [0, -850, 0]);
+
+
+
+  // For the words animation in About section - keeping the ScrollWord functionality
+  const { scrollYProgress: ScrollWord } = useScroll({
+    target: scrollWordsRef,
+    offset: ["0%", "100%"]
   });
-
-
-  const { scrollYProgress: ScrollWord } = useScroll({ target: ref, offset: ["0%", "100%"] });
-
-
-
-  const o1 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [1, 0.8, 0.6, 0.4, 0.2, 0]);
-  const size1 = useTransform(scrollYProgress, [0.5, 1], [1, 0.5]);
-  const opacity = useTransform(scrollY3Progress, [0, 0.3, 1], [1, 0.3, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.4, 1], [1, 0.6, 0.6]);
-
-
-  const y1 = useTransform(scrollYProgress, [0, 1, 0], [0, 600, 0]);
-  const y2 = useTransform(scrollYProgress, [0, 1, 0], [0, 100, 0]);
-  const y3 = useTransform(scrollY4Progress, [0, 1, 0], [0, -400, 0]);
-
-  {/*
-  const y1 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [0, 80, 160, 240, 320, 400]);
-  const y2 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1], [0, 40, 80, 120, 140, 160, 200]);
-*/}
-
 
   const aboutText = `
   
@@ -147,43 +133,34 @@ function App() {
     return elements;
   };
 
-
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setstarted(true)
-    }, 100);
-
-    {/*6000 */ }
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, []);
 
-
   const [hovered, setHovered] = useState(false);
   const [cvHovered, setcvHovered] = useState(false);
 
-
-
-
-
-
-
-
   return (
+    <div ref={mainContainerRef} className="w-[100%] min-h-screen flex flex-col !scroll-smooth
+    -z-999
+    bg-[#E1E1E1] font-Poppins">
 
-    <div className="w-[100%] min-h-screen flex flex-col !scroll-smooth  bg-transparent -z-50 font-Poppins">
-      <div className="h-screen w-full bg-a absolute -z-50"></div>
-      {/* Home Section */}
-      <div
+      {started ? "" : <div className="h-screen w-full bg-a absolute"></div>}
 
+      {/* Home Section with Parallax */}
+      <motion.div
+
+        style={{ y: homeParallax, }}
 
         id='home'
-        className='h-screen max-h-[700px] !z-20     flex flex-col '>
-
+        className='h-screen max-h-[700px] !z-20 flex flex-col'
+      >
 
         <Home />
-
 
         <motion.div
           className="z-30 w-full relative"
@@ -194,145 +171,84 @@ function App() {
           <Navbar />
         </motion.div>
 
-        {/* X DİV için kalan tüm yüksekliği kapla */}
-        <motion.div
-          ref={xDivRef}
-          className="  z-10  w-full  h-[90%] overflow-hidden   px-10 "
-          style={{
-            opacity: o1,  // Kaydırmaya göre opaklık değişir
-            y: y1,   // Kaydırmaya göre boyut değişir
-            scale,
-          }}
-          initial={{ opacity: 0, scale: 0 }} // Başlangıçta gizli ve küçük
-          animate={{ opacity: 1, scale: 1 }}  // Scroll ile görünür ve normal boyuta gelir
-          transition={{ delay: 2, duration: 1 }} // 3 saniye sonra animasyon başlar
-        >
-          <div className=' w-full relative h-full   flex flex-col  justify-start font-Poppins '>
-
-            <div className=' text-[13vw] h-[35vh]  max-md:h-fit max-md:text-[20vw]  w-full overflow-hidden    flex justify-start items-start'>
+        <div className="!z-30 w-full h-[90%] overflow-hidden px-10">
+          <div className='w-full relative h-full flex flex-col justify-start font-Poppins'>
+            <div className='text-[13vw] h-[35vh] max-md:h-fit max-md:text-[20vw] w-full overflow-hidden flex justify-start items-start'>
               <motion.div>
                 <motion.div
-
                   initial={{
                     bottom: "-300px",
-
                     height: 0,
                     position: 'relative',
                     textSizeAdjust: 0,
-
                   }}
                   animate={{
                     height: "100%",
-
                     bottom: 0,
                     textSizeAdjust: "100%",
-
-
                   }}
                   transition={{ duration: 1, delay: 3.5 }}
-
-                  className=' flex items-center justify-between gap-10 font-bold w-full tracking-wide  max-xl:gap-5 flex-nowrap  max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0 max-md:text-[10vw] '>
-
-                  <div
-                  >KİFA</div>
+                  className='flex items-center justify-between gap-10 font-bold w-full tracking-wide max-xl:gap-5 flex-nowrap max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0 max-md:text-[10vw]'
+                >
+                  <div>KİFA</div>
                   <div>TAYNERİ</div>
-
                 </motion.div>
               </motion.div>
-
             </div>
 
             {/*Alt Kısım*/}
-            <div className='flex   h-[55vh]    max-md:flex-col  w-full gap-2 '>
-              <div className=' w-[50%] max-md:w-full'>
-
-
-                <div className='flex flex-col  gap-5 w-full  justify-start items-start '>
+            <div className='flex h-[55vh] max-md:flex-col w-full gap-2'>
+              <div className='w-[50%] max-md:w-full'>
+                <div className='flex flex-col gap-5 w-full justify-start items-start'>
                   <motion.div
-
-                    initial={{
-                      scale: 0,
-
-                    }}
-                    animate={{
-
-                      scale: 1,
-
-                    }}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
                     transition={{ duration: 1, delay: 6 }}
-
                   >
-                    <FiArrowDownRight className='text-6xl max-md:text-5xl text-b ' />
+                    <FiArrowDownRight className='text-6xl max-md:text-5xl text-b' />
                   </motion.div>
 
-
                   <motion.div
-                    initial={{
-                      opacity: 0,
-                      left: "-100px"
-                    }}
-                    animate={{
-                      left: 0,
-                      opacity: 1,
-
-                    }}
+                    initial={{ opacity: 0, left: "-100px" }}
+                    animate={{ left: 0, opacity: 1 }}
                     transition={{ duration: 1, delay: 4.5 }}
-
-                    className='w-[70%] text-b text-xl relative max-md:w-full'>
+                    className='w-[70%] text-b text-xl relative max-md:w-full'
+                  >
                     Modern ve kullanıcı odaklı web uygulamaları geliştiriyorum.
                     React, Next.js ve Node.js ile hızlı, ölçeklenebilir çözümler üretiyorum.
-
                   </motion.div>
 
-                  <div className='flex gap-5 w-full justify-start items-center max-md:gap-2 '>
-
+                  <div className='flex gap-5 w-full justify-start items-center max-md:gap-2'>
                     {/*İletişim Butonu*/}
                     <motion.div
-
-
-                      initial={{
-                        scale: 0,
-
-                      }}
-                      animate={{
-
-                        scale: 1,
-
-                      }}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
                       transition={{ duration: 1, delay: 4.5 }}
-
-
-                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full '>
-                      <div className="relative flex w-full h-full cursor-pointer ">
+                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full'
+                    >
+                      <div className="relative flex w-full h-full cursor-pointer">
                         {/* Üstteki Buton */}
                         <motion.button
                           className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer"
                           onMouseEnter={() => setHovered(true)}
                           onMouseLeave={() => setHovered(false)}
                         >
-                          <div className='z-30 absolute  w-full h-full  top-[35%]'>İletişim</div>
+                          <div className='z-30 absolute w-full h-full top-[35%]'>İletişim</div>
                         </motion.button>
 
                         {/* Alttaki Buton */}
                         <motion.button
-                          className="absolute w-0 h-full bg-[#85856F] text-white  rounded-full"
+                          className="absolute w-0 h-full bg-[#85856F] text-white rounded-full"
                           onMouseEnter={() => setHovered(true)}
                           onMouseLeave={() => setHovered(false)}
-                          initial={{
-                            width: "0",
-                            left: "-100px",
-
-                          }}
+                          initial={{ width: "0", left: "-100px" }}
                           animate={{
                             width: hovered ? "100%" : "0",
                             left: hovered ? "0" : "-100px",
-
-
-                          }}  // Hover durumuna göre genişlik ayarlanır
-                          transition={{ duration: 1 }}  // 2 saniyelik geçiş süresi
+                          }}
+                          transition={{ duration: 1 }}
                         />
                       </div>
-
                     </motion.div>
 
                     {/* CV Butonu */}
@@ -348,7 +264,7 @@ function App() {
                           className="absolute w-full h-full bg-[#B7950B] text-white rounded-full cursor-pointer"
                           onMouseEnter={() => setcvHovered(true)}
                           onMouseLeave={() => setcvHovered(false)}
-                          onClick={openCVModal} // Modalı aç
+                          onClick={openCVModal}
                         >
                           <div className='z-30 absolute w-full h-full top-[35%]'>CV İndir</div>
                         </motion.button>
@@ -364,212 +280,127 @@ function App() {
                             left: cvHovered ? "0" : "-100px",
                           }}
                           transition={{ duration: 1 }}
-                          onClick={openCVModal} // Modalı aç
+                          onClick={openCVModal}
                         />
                       </div>
                     </motion.div>
                   </div>
-
-
-
                 </div>
               </div>
 
-
               <motion.div
-
-
-                initial={{
-
-                  height: 0
-                }}
-                animate={{
-
-                  height: "100%"
-
-                }}
-
+                initial={{ height: 0 }}
+                animate={{ height: "100%" }}
                 transition={{ duration: 1, delay: 5 }}
-
-
-                className='w-[50%]  flex gap-2 object-cover  max-md:hidden'>
-
+                className='w-[50%] flex gap-2 object-cover max-md:hidden'
+              >
                 <img className='h-full w-[50%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
-                <div className='h-full w-[30%] flex justify-center flex-col  gap-10 items-center'>
-
-
+                <div className='h-full w-[30%] flex justify-center flex-col gap-10 items-center'>
                   <motion.a
                     initial={{ height: 0 }}
                     animate={{ height: "10%" }}
-                    transition={{
-                      duration: 1,
-                      delay: 5
-                    }}
-
-
+                    transition={{ duration: 1, delay: 5 }}
                     href='https://github.com/Vi303832'
-                    target='_blank'>
-                    <FaGithub className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-gray-700 h-full  ' />
+                    target='_blank'
+                  >
+                    <FaGithub className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-gray-700 h-full' />
                   </motion.a>
                   <motion.a
                     initial={{ height: 0 }}
                     animate={{ height: "10%" }}
-                    transition={{
-                      duration: 1,
-                      delay: 5
-                    }}
-
-
-                    href=''>
-                    <FaInstagram className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#E1306C]  h-full  ' />
+                    transition={{ duration: 1, delay: 5 }}
+                    href=''
+                  >
+                    <FaInstagram className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#E1306C] h-full' />
                   </motion.a>
                   <motion.a
                     initial={{ height: 0 }}
                     animate={{ height: "10%" }}
-                    transition={{
-                      duration: 1,
-                      delay: 5
-                    }}
-
-
+                    transition={{ duration: 1, delay: 5 }}
                     href='https://www.linkedin.com/in/mehmetakiftanyeri-382458351/'
-                    target='_blank'>
-                    <FaLinkedin className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#0A66C2]  h-full  ' />
+                    target='_blank'
+                  >
+                    <FaLinkedin className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#0A66C2] h-full' />
                   </motion.a>
-
                   <motion.a
                     initial={{ height: 0 }}
                     animate={{ height: "10%" }}
-                    transition={{
-                      duration: 1,
-                      delay: 5
-                    }}
-
-
+                    transition={{ duration: 1, delay: 5 }}
                     href='https://www.linkedin.com/in/mehmetakiftanyeri-382458351/'
-                    target='_blank'>
-                    <FaYoutube className='text-4xl max-xl:text-7xl w-full   h-full hover:text-[#FE0033]' />
+                    target='_blank'
+                  >
+                    <FaYoutube className='text-4xl max-xl:text-7xl w-full h-full hover:text-[#FE0033]' />
                   </motion.a>
-
-                  <div className='relative h-[30px]  '>
+                  <div className='relative h-[30px]'>
                     <motion.div
-
-                      initial={{
-                        opacity: 0,
-
-
-                      }}
-                      animate={{
-
-                        opacity: "100%"
-                      }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: "100%" }}
                       transition={{ duration: 3, delay: 4 }}
                       className='relative'
                     >
                       <motion.div
-
-                        initial={{
-                          left: "-400px",
-
-
-                        }}
-                        animate={{
-                          left: 0,
-
-
-                        }}
+                        initial={{ left: "-400px" }}
+                        animate={{ left: 0 }}
                         transition={{ duration: 1, delay: 4 }}
                         className='relative'
                       >
-                        <span className='text-center flex items-center justify-center '>   (Frontend Developer)</span>
+                        <span className='text-center flex items-center justify-center'>(Frontend Developer)</span>
                       </motion.div>
                     </motion.div>
-
                   </div>
-
                 </div>
-
               </motion.div>
-
-
-
-
-
             </div>
-
-
-
           </div>
-        </motion.div >
-      </div >
-
-      {/* İçerik DİV */}
-      <div
+        </div>
+      </motion.div>
 
 
 
+      {/* Content Section with Parallax */}
+      <div className={`min-h-screen bg-[#E1E1E1] z-20 text-kbeyaz font-Poppins ${started ? "" : "hidden"}`}>
 
-
-
-        className={`min-h-screen bg-[#E1E1E1] z-20   text-kbeyaz font-Poppins  ${started ? "" : "hidden"} `
-        }>
-        {/* Sayfa içeriği */}
-
-        {/* Hakkımda Kısmı */}
-        <div
-
-
-          className="h-fit relative flex justify-center flex-col items-center bg-a   max-md:text-lg   rounded-t-4xl pb-40 pt-20" >
-
-
-          <motion.div
-
-            className=" flex flex-col  w-[90%] h-[70%]  gap-10 ">
-
-            {/*Home hitbox*/}
+        {/* Hakkımda Section with Parallax */}
+        <motion.div
+          ref={aboutRef}
+          style={{ y: aboutParallax }}
+          className="h-fit relative flex justify-center flex-col items-center bg-a max-md:text-lg rounded-t-4xl pb-40 pt-20"
+        >
+          <motion.div className="flex flex-col w-[90%] h-[70%] gap-10">
+            {/* ScrollWords reference */}
             <div
-              ref={ref}
-
-              className='w-[60vw] h-250 bg-amber-300 z-30 absolute opacity-30 -top-150 pointer-events-none   invisible'
-            >
-
-
-            </div>
+              ref={scrollWordsRef}
+              className='w-[60vw] h-250 z-30 absolute -top-150 pointer-events-none invisible'
+            />
             <div className='text-3xl text-beyaz'>Hakkımda</div>
             <div className="text-[40px] max-md:text-2xl leading-relaxed max-[400px]:!text-xl">
               {renderWords()}
             </div>
-
-
-
           </motion.div>
+        </motion.div>
 
-
-        </div>
-
-        {/*  Yetenekler*/}
+        {/* Yetenekler Section with Parallax */}
         <motion.div
-
-
-          style={{
-            y: y3,
-          }}
-          initial={{ y: 100, }} // Başlangıçta gizli ve küçük
-          animate={{ y: 0 }}  // Scroll ile görünür ve normal boyuta gelir
-          className='z-20  '
-
+          ref={skillsRef}
+          style={{ y: skillsParallax }}
+          className='z-20'
         >
-
-
           <Skills2 />
-
         </motion.div>
 
-
-        {/* Projeler */}
-        <motion.div>
+        {/* Projeler Section with Parallax */}
+        <motion.div
+          ref={worksRef}
+          style={{ y: worksParallax }}
+        >
           <Works />
+          <div className='w-full h-[50vh] flex  fixed  items-center justify-center    '>
+            (Sıradaki işbirliği neden sizinle olmasın?)
+          </div>
+
         </motion.div>
+
+
 
         {/* İletişim */}
         <motion.div>
@@ -579,15 +410,11 @@ function App() {
         {/* Footer */}
         <motion.div>
           <Footer />
-
         </motion.div>
 
         <CVModal isOpen={isCVModalOpen} onClose={closeCVModal} />
-
-
       </div>
-
-    </div >
+    </div>
   );
 }
 

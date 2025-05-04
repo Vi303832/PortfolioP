@@ -48,12 +48,13 @@ function Skills() {
     ];
 
     return (
-        <div className='min-h-screen w-full bg-a rounded-t-4xl border-t text-beyaz flex justify-center max-sm:bottom-20 max-sm:relative overflow-hidden'>
-            <div className='w-[90%] flex flex-col justify-center'>
-                <div className='text-3xl pb-30 pt-20 max-md:pb-10  '>Yetenekler</div>
+        <div className='min-h-screen w-full   rounded-t-4xl border-t-2 border-white text-beyaz flex justify-center    '>
+
+            <div className='w-full   flex flex-col justify-center z-10 bg-a min-md:px-20 px-5 rounded-t-4xl border-t-2 border-white '>
+                <div className='text-3xl pb-30 pt-20 max-md:pb-10    '>Yetenekler</div>
 
                 {/*>md Bileşenler */}
-                <div className='h-full flex flex-col max-md:hidden '>
+                <div className='h-full flex flex-col max-md:hidden w-full '>
                     {components.map((component) => (
                         <SkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
                     ))}
@@ -97,7 +98,7 @@ function SkillComponent({ title, description, yd }) {
 
     return (
         <>
-            <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5 pb-40 max-md:hidden '>
+            <div className='relative w-full h-[30vh] text-7xl font-bold flex items-center justify-between gap-5  max-md:hidden '>
 
                 <div
                     className='!top-10 absolute'
