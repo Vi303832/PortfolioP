@@ -282,15 +282,20 @@ export default function Works() {
     const previewHeight = getPreviewHeight();
 
     return (
-        <section ref={sectionRef} className="bg-a rounded-t-4xl border-t text-white py-6 md:py-10" id="projeler">
+        <section
+
+            ref={sectionRef} className="bg-a rounded-t-4xl border-t text-white py-6 md:py-10" >
             <div className="container mx-auto px-20 max-md:px-5">
                 <h2
+
                     className="text-3xl  pt-5 pb-10 max-md:pl-3 opacity-80"
                 >
                     Projeler
                 </h2>
 
-                <div className="flex flex-col md:flex-row gap-6 md:gap-8" ref={projectsRef}>
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8"
+
+                    ref={projectsRef}>
                     {/* Projects list */}
                     <div className="w-full md:w-1/2 flex flex-col">
                         {projects.map((project, index) => (

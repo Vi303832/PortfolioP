@@ -60,9 +60,9 @@ function App() {
 
   const aboutText = `
   
-  <strong>Frontend geliştirme </strong>konusunda <strong>uzmanlaştım.</strong><br/>
+  <strong>Frontend geliştirme </strong>konusunda <strong>uzmanlaşan bir geliştiriciyim.</strong><br/>
   Aynı zamanda <strong>backend</strong>  tarafında da  <strong>gerekli düzeyde</strong> teknik bilgiye sahibim;
-  projelerde tüm yapıyı anlayarak ilerliyorum.<br/>
+  projelerde tüm yapıyı anlayarak  işimi ileriye taşıyorum.<br/>
   Çözüm odaklı, sürdürülebilir ve işlevsel ürünler üretmeye odaklanırım.
   <strong>Sorumluluk</strong> almayı ve başladığım <strong>işi bitirmeyi önemserim.</strong>
   Yazılımı sadece kod değil, işe yarayan ürünler ortaya koymak olarak görüyorum.
@@ -149,7 +149,7 @@ function App() {
         style={{
           y: homeParallax,
         }}
-        id='home'
+        id='Home'
         className='h-screen max-h-[700px] !z-20 flex flex-col'
       >
         <Home />
@@ -182,8 +182,8 @@ function App() {
                   transition={{ duration: 1, delay: 3.5 }}
                   className='flex items-center justify-between gap-10 font-bold w-full tracking-wide max-xl:gap-5 flex-nowrap max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0 max-md:text-[10vw]'
                 >
-                  <div>KİFA</div>
-                  <div>TAYNERİ</div>
+                  <div>AKİF</div>
+                  <div>TANYERİ</div>
                 </motion.div>
               </motion.div>
             </div>
@@ -358,12 +358,17 @@ function App() {
           <motion.div className="flex flex-col w-[90%] h-[70%] gap-10">
             {/* ScrollWords reference */}
             <div
+
               ref={scrollWordsRef}
               className='w-[60vw] h-280 z-30 absolute -top-150 pointer-events-none max-md:h-400  opacity-30'
             />
 
-            <div className='text-3xl text-beyaz'>Hakkımda</div>
-            <div className="text-[40px] max-md:text-2xl leading-relaxed max-[400px]:!text-xl">
+            <div
+              id='Hakkımda'
+              className='text-3xl text-beyaz'>Hakkımda</div>
+            <div
+
+              className="text-[40px] max-md:text-2xl leading-relaxed max-[400px]:!text-xl">
               {renderWords()}
             </div>
           </motion.div>
@@ -371,15 +376,17 @@ function App() {
 
         {/* Yetenekler Section with Parallax */}
         <motion.div
+
           ref={skillsRef}
           style={{ y: skillsParallax }}
           className='z-20'
         >
           <Skills2 />
-        </motion.div>
+        </motion.div >
 
         {/* Projeler Section with Parallax - worksRef ekleme */}
         <motion.div
+
           ref={worksRef}
           style={{ y: worksParallax }}
           className="relative works-container"
@@ -393,7 +400,9 @@ function App() {
         </motion.div>
 
         {/* İletişim */}
-        <motion.div className=''>
+        <motion.div
+
+          className=''>
           <Contact />
         </motion.div>
 

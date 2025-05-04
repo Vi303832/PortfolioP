@@ -29,12 +29,12 @@ function Skills() {
     ];
 
     const components = [
-        { id: 1, yd: 10, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
-        { id: 2, yd: 130, title: "BACKEND", description: "Node.js , Express.js ve Firebase  teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB ve Firestore gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
-        { id: 3, yd: 140, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
+        { id: 1, yd: 0, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
+        { id: 2, yd: 60, title: "BACKEND", description: "Node.js , Express.js ve Firebase  teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB ve Firestore gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
+        { id: 3, yd: 70, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
         {
             id: 4,
-            yd: 220,
+            yd: 140,
             title: "TEKNOLOJİLER",
             description: <div className="flex flex-wrap gap-4">
                 {techIcons.map((tech, index) => (
@@ -51,7 +51,9 @@ function Skills() {
         <div className='min-h-screen w-full   rounded-t-4xl border-t  text-beyaz flex justify-center    '>
 
             <div className='w-full   flex flex-col justify-center z-10 bg-a min-md:px-20 px-5 rounded-t-4xl border-t border-white pb-20 max-md:pb-30 '>
-                <div className='text-3xl pb-10 pt-20   '>Yetenekler</div>
+                <div
+                    id='Yetenekler'
+                    className='text-3xl pb-10 pt-20   '>Yetenekler</div>
 
                 {/*>md Bileşenler */}
                 <div className='h-full flex flex-col max-md:hidden w-full '>
@@ -72,7 +74,8 @@ function Skills() {
 
 
 
-
+                <div className='h-[10vh] bg-amber-400 absolute invinsible pointer-events-none '
+                    id="Projeler"></div>
 
             </div>
         </div>
@@ -104,7 +107,7 @@ function SkillComponent({ title, description, yd }) {
                     className='!top-10 absolute'
                 >
                     <div
-                        className="absolute w-[50vh] h-[50vh] flex items-center justify-center bg-amber-400 z-20 border-t-8 opacity-30 invisible "
+                        className="absolute w-[50vh] h-[50vh] flex items-center justify-center bg-amber-400 z-20 border-t-8 invisible pointer-events-none  "
                         style={{ top: `-${yd}px ` }}
                         ref={ref2}
                     />

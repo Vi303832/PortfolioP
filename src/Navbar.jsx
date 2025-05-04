@@ -5,33 +5,41 @@ import { IoClose } from "react-icons/io5";
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
-
-
-
-
 function Navbar() {
 
-    let [open, setopen] = useState(false)
-    let [hovered, setHovered] = useState(false)
+    const [open, setopen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
+    const handleScroll = (e, id) => {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+            // Önce menüyü kapat
+            setopen(false);
+
+            // Kısa bir gecikme ile scroll işlemini gerçekleştir
+            setTimeout(() => {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            }, 300); // Menü kapanma animasyonu için bekle
+        }
+    };
 
     const navItems = [
-        { id: 1, label: 'Home' },
-        { id: 2, label: 'Hakkımda' },
-        { id: 3, label: 'Yetenekler' },
-        { id: 4, label: 'Projeler' },
-        { id: 5, label: 'İletişim' }
+        { id: "Home", label: 'Home' },
+        { id: "Hakkımda", label: 'Hakkımda' },
+        { id: "Yetenekler", label: 'Yetenekler' },
+        { id: "Projeler", label: 'Projeler' },
+        { id: "İletişim", label: 'İletişim' }
     ];
-
-
 
     return (
         <div className='relative'>
             <AnimatePresence>
                 {open && (
-                    <div className="min-md:hidden fixed inset-0 !z-30 pointer-events-none">
+                    <div className="min-md:hidden fixed inset-0 !z-30">
                         <motion.div
                             className="bg-b absolute top-5 right-10"
                             initial={{ height: 40, width: 40, borderRadius: "50%" }}
@@ -54,10 +62,11 @@ function Navbar() {
                                 ease: "easeInOut"
                             }}
                         >
-                            <div className="flex gap-8 flex-col h-screen max-sm:justify-start max-sm:pt-40 items-center justify-center text-white pointer-events-auto">
-                                {['Home', 'Hakkımda', 'Yetenekler', 'Projeler', 'İletişim'].map((item, index) => (
+                            <div className="flex gap-8 flex-col h-screen max-sm:justify-start max-sm:pt-40 items-center justify-center text-white">
+                                {navItems.map((item, index) => (
                                     <motion.div
                                         key={index}
+                                        onClick={(e) => handleScroll(e, item.id)}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{
@@ -72,9 +81,9 @@ function Navbar() {
                                             delay: 0.5 + (index * 0.1),
                                             duration: 0.3
                                         }}
-                                        className="text-2xl font-light tracking-wider border-b border-transparent hover:border-white  transition-all duration-300 cursor-pointer"
+                                        className="text-2xl font-light tracking-wider border-b border-transparent hover:border-white transition-all duration-300 cursor-pointer"
                                     >
-                                        {item}
+                                        {item.label}
                                     </motion.div>
                                 ))}
                             </div>
@@ -147,6 +156,7 @@ function Navbar() {
                         {navItems.map((item, index) => (
                             <div key={item.id} className='relative flex w-[100px] h-[20px] items-center justify-center'>
                                 <motion.div
+                                    onClick={(e) => handleScroll(e, item.id)}
                                     onMouseEnter={() => setHoveredIndex(index)}
                                     onMouseLeave={() => setHoveredIndex(null)}
                                     className="relative flex w-full h-full overflow-hidden cursor-pointer"
@@ -160,6 +170,7 @@ function Navbar() {
                                             top: hoveredIndex === index ? "0px" : "-20px",
                                         }}
                                         transition={{ duration: 0.2 }}
+                                        onClick={(e) => handleScroll(e, item.id)}
                                     >
                                         <div className='z-30 absolute w-full h-full flex justify-center items-center cursor-pointer'>
                                             {item.label}
@@ -174,10 +185,11 @@ function Navbar() {
                                             bottom: hoveredIndex === index ? "-20px" : "0px",
                                         }}
                                         transition={{ duration: 0.2 }}
+                                        onClick={(e) => handleScroll(e, item.id)}
                                     >
-                                        <a href={item.label} className='z-30 absolute w-full h-full flex justify-center items-center cursor-pointer'>
+                                        <div className='z-30 absolute w-full h-full flex justify-center items-center cursor-pointer'>
                                             {item.label}
-                                        </a>
+                                        </div>
                                     </motion.button>
                                 </motion.div>
                             </div>
