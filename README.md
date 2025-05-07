@@ -46,6 +46,8 @@ npm run dev
 Bu proje yalnızca kişisel tanıtım ve portföy amacıyla hazırlanmıştır. Kodu klonlamak serbesttir ancak içerik ve tasarımı birebir kopyalamadan önce geliştiriciden izin alınmalıdır.
 
 🧑‍💻 Geliştirici: Akif Tanyeri
+
 📫 LinkedIn : www.linkedin.com/in/mehmetakiftanyeri-382458351
+
 📧 mehmetakiftanyerii@hotmail.com
 
