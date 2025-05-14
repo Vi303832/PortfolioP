@@ -11,7 +11,7 @@ import {
     SiJavascript,
     SiExpress,
     SiMongodb,
-
+    SiTypescript
 } from 'react-icons/si';
 import { IoLogoFirebase } from "react-icons/io5";
 
@@ -21,6 +21,7 @@ function Skills() {
         { icon: <SiNextdotjs className="text-3xl" />, name: "Next.js" },
         { icon: <SiTailwindcss className="text-3xl" />, name: "Tailwind CSS" },
         { icon: <SiJavascript className="text-3xl" />, name: "JavaScript" },
+        { icon: <SiTypescript className="text-3xl" />, name: "TypeScript" },
         { icon: <FaNodeJs className="text-3xl" />, name: "Node.js" },
         { icon: <SiExpress className="text-3xl" />, name: "Express.js" },
         { icon: <SiMongodb className="text-3xl" />, name: "MongoDB" },

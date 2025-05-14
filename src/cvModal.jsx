@@ -1,7 +1,7 @@
 // CVModal.jsx
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import cvPdf from './cv.pdf'; // Make sure this path is correct
+import cvPdf from './mehmetakiftanyericv.pdf'; // Make sure this path is correct
 
 const CVModal = ({ isOpen, onClose }) => {
     useEffect(() => {

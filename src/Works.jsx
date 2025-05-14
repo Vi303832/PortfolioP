@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import Sultan from "./assets/gifs/Sultan.webm"
+import Ekip from "./assets/gifs/Ekip.webm"
+import Kuf from "./assets/gifs/Kuf.webm"
+import Zynote from "./assets/gifs/Zynote.webm"
 
 
 const ProjectCard = ({ project, index, activeProject, setActiveProject, onHover }) => {
@@ -243,37 +247,38 @@ export default function Works() {
     const projects = [
         {
             id: 1,
-            title: "Not Defteri",
+            title: "Zynote",
             description: "Not Alma Uygulaması / MERN Stack (MongoDB, Express, React, Node.js)",
-            imageUrl: "https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif",
+            imageUrl: Zynote,
             githubLink: "https://github.com/Vi303832/CM",
+            siteLink: "https://zynote.vercel.app/",
             isGif: true,
         },
         {
             id: 2,
-            title: "Kuf",
-            description: "E-ticaret Platformu / Firebase, Redux Toolkit, Cloudinary, React",
-            imageUrl: "https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif",
-            githubLink: "https://github.com/Vi303832/EcommerceP",
-            siteLink: "https://kufproject.vercel.app/",
+            title: "Sultan",
+            description: "Yerel İşletme Websitesi / React, Tailwind CSS",
+            imageUrl: Sultan,
+            githubLink: "https://github.com/Vi303832/Sultan",
+            siteLink: "https://www.sultandugunsalonlari.com.tr/",
             isGif: true,
         },
         {
             id: 3,
-            title: "Sultan",
+            title: "Ekip",
             description: "Yerel İşletme Websitesi / React, Tailwind CSS",
-            imageUrl: "https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif",
-            githubLink: "https://github.com/Vi303832/Sultan",
-            siteLink: "https://sultan-5i3p.vercel.app/",
+            imageUrl: Ekip,
+            githubLink: "https://github.com/Vi303832/ekip-boya-insaat",
+            siteLink: "https://www.ekipboya.com/",
             isGif: true,
         },
         {
             id: 4,
-            title: "Ekip",
-            description: "Yerel İşletme Websitesi / React, Tailwind CSS",
-            imageUrl: "https://media1.tenor.com/m/lSHTHwjvbrUAAAAC/ai-dog.gif",
-            githubLink: "https://github.com/Vi303832/EKP",
-            siteLink: "https://ekip-beta.vercel.app/",
+            title: "Kuf",
+            description: "E-ticaret Platformu / Firebase, Redux Toolkit, Cloudinary, React",
+            imageUrl: Kuf,
+            githubLink: "https://github.com/Vi303832/EcommerceP",
+            siteLink: "https://kufproject.vercel.app/",
             isGif: true,
         },
     ];

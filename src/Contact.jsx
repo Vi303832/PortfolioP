@@ -194,18 +194,14 @@ export default function Contact() {
                                                     <FaGithub className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
                                                 </a>
                                                 <a
-                                                    href="https://www.instagram.com/"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
+
                                                 >
-                                                    <FaInstagram className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
+                                                    <FaInstagram className="text-2xl text-gray-300 pointer-events-none cursor-pointer transition-colors" />
                                                 </a>
                                                 <a
-                                                    href="https://youtube.com"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
+
                                                 >
-                                                    <FaYoutube className="text-2xl text-gray-300 hover:text-[#85856F] cursor-pointer transition-colors" />
+                                                    <FaYoutube className="text-2xl text-gray-300  pointer-events-none cursor-pointer transition-colors" />
                                                 </a>
                                             </div>
                                         </div>

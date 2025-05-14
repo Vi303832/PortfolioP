@@ -15,6 +15,7 @@ import Skills2 from './Skills2';
 import CVModal from './cvModal.jsx';
 import Contact from './Contact';
 import Footer from './Footer';
+import profile from './assets/profile.jpeg';
 
 
 function App() {
@@ -286,7 +287,7 @@ function App() {
                 transition={{ duration: 1, delay: 5 }}
                 className='w-[50%] flex gap-2 object-cover max-md:hidden'
               >
-                <img className='h-full w-[50%] object-cover' src='https://www.byhuy.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile2.62ed58c9.avif&w=3840&q=75' />
+                <img className='h-full w-[50%] object-cover' src={profile} />
                 <div className='h-full w-[30%] flex justify-center flex-col gap-10 items-center'>
                   <motion.a
                     initial={{ height: 0 }}
@@ -301,9 +302,9 @@ function App() {
                     initial={{ height: 0 }}
                     animate={{ height: "10%" }}
                     transition={{ duration: 1, delay: 5 }}
-                    href=''
+
                   >
-                    <FaInstagram className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#E1306C] h-full' />
+                    <FaInstagram className='text-4xl max-xl:text-7xl w-full cursor-pointer hover:text-[#E1306C] h-full pointer-events-none ' />
                   </motion.a>
                   <motion.a
                     initial={{ height: 0 }}
@@ -318,10 +319,9 @@ function App() {
                     initial={{ height: 0 }}
                     animate={{ height: "10%" }}
                     transition={{ duration: 1, delay: 5 }}
-                    href='https://www.linkedin.com/in/mehmetakiftanyeri-382458351/'
-                    target='_blank'
+
                   >
-                    <FaYoutube className='text-4xl max-xl:text-7xl w-full h-full hover:text-[#FE0033]' />
+                    <FaYoutube className='text-4xl max-xl:text-7xl w-full h-full hover:text-[#FE0033] pointer-events-none' />
                   </motion.a>
                   <div className='relative h-[30px]'>
                     <motion.div
