@@ -15,7 +15,7 @@ import {
 } from 'react-icons/si';
 import { IoLogoFirebase } from "react-icons/io5";
 
-function Skills() {
+function Skills({ lang = 'tr' }) {
     const techIcons = [
         { icon: <FaReact className="text-3xl" />, name: "React.js" },
         { icon: <SiNextdotjs className="text-3xl" />, name: "Next.js" },
@@ -30,21 +30,37 @@ function Skills() {
     ];
 
     const components = [
-        { id: 1, yd: 0, title: "FRONTEND", description: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum" },
-        { id: 2, yd: 60, title: "BACKEND", description: "Node.js , Express.js ve Firebase  teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB ve Firestore gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum" },
-        { id: 3, yd: 70, title: "UI/UX", description: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum" },
         {
-            id: 4,
-            yd: 140,
-            title: "TEKNOLOJİLER",
-            description: <div className="flex flex-wrap gap-4">
-                {techIcons.map((tech, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                        {tech.icon}
-                        <span>{tech.name}</span>
-                    </div>
-                ))}
-            </div>
+            id: 1, yd: 0,
+            title: { tr: "FRONTEND", en: "FRONTEND" },
+            description: {
+                tr: "Modern web uygulamaları geliştirirken, React ve Next.js kullanarak ölçeklenebilir, performanslı ve kullanıcı odaklı arayüzler üretiyorum",
+                en: "While developing modern web applications, I produce scalable, performant, and user-oriented interfaces using React and Next.js."
+            }
+        },
+        {
+            id: 2, yd: 60,
+            title: { tr: "BACKEND", en: "BACKEND" },
+            description: {
+                tr: "Node.js , Express.js ve Firebase  teknolojileriyle basit ve ölçeklenebilir API çözümleri geliştiriyor, MongoDB ve Firestore gibi NoSQL veritabanlarıyla veri yönetimi sağlıyorum",
+                en: "I develop simple and scalable API solutions with Node.js, Express.js, and Firebase technologies, and manage data with NoSQL databases like MongoDB and Firestore."
+            }
+        },
+        {
+            id: 3, yd: 70,
+            title: { tr: "UI/UX", en: "UI/UX" },
+            description: {
+                tr: "Arayüz geliştirirken kullanıcı deneyimini ön planda tutuyorum. Responsive tasarım, erişilebilirlik ve modern UI prensiplerine dikkat ederek etkileyici ve kullanılabilir uygulamalar geliştiriyorum",
+                en: "While developing interfaces, I prioritize user experience. I create impressive and usable applications by paying attention to responsive design, accessibility, and modern UI principles."
+            }
+        },
+        {
+            id: 4, yd: 140,
+            title: { tr: "TEKNOLOJİLER", en: "TECHNOLOGIES" },
+            description: {
+                tr: <div className="flex flex-wrap gap-4">{techIcons.map((tech, index) => (<div key={index} className="flex items-center gap-2">{tech.icon}<span>{tech.name}</span></div>))}</div>,
+                en: <div className="flex flex-wrap gap-4">{techIcons.map((tech, index) => (<div key={index} className="flex items-center gap-2">{tech.icon}<span>{tech.name}</span></div>))}</div>
+            }
         },
     ];
 
@@ -53,20 +69,20 @@ function Skills() {
 
             <div className='w-full   flex flex-col justify-center z-10 bg-a min-md:px-20 px-5 rounded-t-4xl border-t border-white pb-20 max-[1200px]:pb-30  '>
                 <div
-                    id='Yetenekler'
-                    className='text-3xl pb-10 pt-20   '>Yetenekler</div>
+                    id="Yetenekler"
+                    className='text-3xl pb-10 pt-20   '>{lang === 'tr' ? 'Yetenekler' : 'Skills'}</div>
 
                 {/*>md Bileşenler */}
                 <div className='h-full flex flex-col max-[1200px]:hidden w-full '>
                     {components.map((component) => (
-                        <SkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
+                        <SkillComponent key={component.id} title={component.title[lang]} description={component.description[lang]} yd={component.yd} />
                     ))}
                 </div>
 
                 {/*<md Bileşenler */}
                 <div className='h-full hidden max-[1200px]:flex flex-col '>
                     {components.map((component) => (
-                        <MobileSkillComponent key={component.id} title={component.title} description={component.description} yd={component.yd} />
+                        <MobileSkillComponent key={component.id} title={component.title[lang]} description={component.description[lang]} yd={component.yd} />
                     ))}
                 </div>
 

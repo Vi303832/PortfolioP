@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function Navbar() {
+function Navbar({ lang = 'tr' }) {
 
     const [open, setopen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -28,11 +28,11 @@ function Navbar() {
     };
 
     const navItems = [
-        { id: "Home", label: 'Home' },
-        { id: "Hakkımda", label: 'Hakkımda' },
-        { id: "Yetenekler", label: 'Yetenekler' },
-        { id: "Projeler", label: 'Projeler' },
-        { id: "İletişim", label: 'İletişim' }
+        { id: "Home", label: { tr: 'Anasayfa', en: 'Home' } },
+        { id: "Hakkımda", label: { tr: 'Hakkımda', en: 'About' } },
+        { id: "Yetenekler", label: { tr: 'Yetenekler', en: 'Skills' } },
+        { id: "Projeler", label: { tr: 'Projeler', en: 'Projects' } },
+        { id: "İletişim", label: { tr: 'İletişim', en: 'Contact' } }
     ];
 
     return (
@@ -83,7 +83,7 @@ function Navbar() {
                                         }}
                                         className="text-2xl font-light tracking-wider border-b border-transparent hover:border-white transition-all duration-300 cursor-pointer"
                                     >
-                                        {item.label}
+                                        {item.label[lang]}
                                     </motion.div>
                                 ))}
                             </div>
@@ -173,7 +173,7 @@ function Navbar() {
                                         onClick={(e) => handleScroll(e, item.id)}
                                     >
                                         <div className='z-30 absolute w-full h-full flex justify-center items-center cursor-pointer'>
-                                            {item.label}
+                                            {item.label[lang]}
                                         </div>
                                     </motion.button>
                                     <motion.button
@@ -188,7 +188,7 @@ function Navbar() {
                                         onClick={(e) => handleScroll(e, item.id)}
                                     >
                                         <div className='z-30 absolute w-full h-full flex justify-center items-center cursor-pointer'>
-                                            {item.label}
+                                            {item.label[lang]}
                                         </div>
                                     </motion.button>
                                 </motion.div>

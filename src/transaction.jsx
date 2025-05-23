@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiArrowDownRight } from "react-icons/fi";
 
-export default function TransitionSection() {
+export default function TransitionSection({ lang = 'tr' }) {
     const [hovered, setHovered] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
@@ -17,6 +17,12 @@ export default function TransitionSection() {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
     const yText = useTransform(scrollYProgress, [0, 0.7], [100, 0]);
     const scale = useTransform(scrollYProgress, [0, 0.7], [0.8, 1]);
+
+    // Metinler
+    const texts = {
+        title: { tr: 'Sıradaki işbirliği neden sizinle olmasın?', en: 'Why not the next collaboration with you?' },
+        desc: { tr: 'Fikirlerinizi hayata geçirmek için modern ve kullanıcı dostu çözümler üretebiliriz.', en: 'We can produce modern and user-friendly solutions to bring your ideas to life.' }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -63,16 +69,15 @@ export default function TransitionSection() {
                         style={{ y: yText, opacity }}
                         className="text-3xl md:text-6xl font-bold text-[#3B3835] mb-6 md:mb-8 lg:text-2xl"
                     >
-                        Sıradaki işbirliği neden sizinle olmasın?
+                        {texts.title[lang]}
                     </motion.h2>
 
                     <motion.p
                         style={{ y: yText, opacity, transition: { delay: 0.2 } }}
                         className="text-lg md:text-2xl text-[#3B3835] max-w-2xl mb-8 md:mb-12 lg:text-xl"
                     >
-                        Fikirlerinizi hayata geçirmek için modern ve kullanıcı dostu çözümler üretebiliriz.
+                        {texts.desc[lang]}
                     </motion.p>
-
 
                 </motion.div>
             </div>

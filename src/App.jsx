@@ -17,6 +17,7 @@ import Contact from './Contact';
 import Footer from './Footer';
 import profile from './assets/profile.jpeg';
 
+const MAX_WORDS = 50;
 
 function App() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
@@ -24,6 +25,10 @@ function App() {
   const closeCVModal = () => setIsCVModalOpen(false);
 
   let [started, setstarted] = useState(false);
+
+  // Dil state'i
+  const [lang, setLang] = useState('tr');
+  const toggleLang = () => setLang((prev) => (prev === 'tr' ? 'en' : 'tr'));
 
   // Main container reference for parallax scrolling
   const mainContainerRef = useRef(null);
@@ -60,7 +65,6 @@ function App() {
   });
 
   const aboutText = `
-  
   <strong>Frontend geliştirme </strong>konusunda <strong>uzmanlaşan bir geliştiriciyim.</strong><br/>
   Aynı zamanda <strong>backend</strong>  tarafında da  <strong>gerekli düzeyde</strong> teknik bilgiye sahibim;
   projelerde tüm yapıyı anlayarak  işimi ileriye taşıyorum.<br/>
@@ -69,27 +73,46 @@ function App() {
   Yazılımı sadece kod değil, işe yarayan ürünler ortaya koymak olarak görüyorum.
 `;
 
+  const aboutTextEn = `
+  <strong>Frontend development</strong> is where I <strong>specialize as a developer.</strong><br/>
+  I also possess <strong>necessary technical knowledge</strong> in <strong>backend</strong> development;
+  I advance my work by understanding the entire structure of projects.<br/>
+  I focus on creating solution-oriented, sustainable, and functional products.
+  I value taking <strong>responsibility</strong> and <strong>completing what I start.</strong>
+  I see software development not just as code, but as creating products that make a difference.
+`;
+  // useTransform hook'larını bileşen dışında önceden tanımlayalım
+  const useWordOpacity = (scrollProgress, index) => {
+    return useTransform(
+      scrollProgress,
+      [0.3 + (index / 100 * 0.6), 0.4 + (index / 100 * 0.6)],
+      [0.1, 1]
+    );
+  };
+
+  // Ana bileşen içinde
+  const wordOpacities = Array.from({ length: MAX_WORDS }, (_, i) =>
+    useTransform(
+      ScrollWord,
+      [0.3 + (i / 100 * 0.6), 0.4 + (i / 100 * 0.6)],
+      [0.1, 1]
+    )
+  );
+
+  // 3. Orijinal render fonksiyonunuz (sadece opacity kaynağını değiştirin)
   const renderWords = () => {
+    const text = lang === 'tr' ? aboutText : aboutTextEn;
     const elements = [];
     let wordIndex = 0;
 
-    // Parse edilen nodları işle
-    parse(aboutText).forEach((node, nodeIndex) => {
+    const processNode = (node) => {
       if (typeof node === 'string') {
-        // String içindeki kelimeleri ayır
-        node.split(' ').forEach((word, i) => {
-          if (word.trim() !== '') {
-            const opacity = useTransform(
-              ScrollWord,
-              [0.3 + (wordIndex / 100 * 0.6), 0.4 + (wordIndex / 100 * 0.6)],
-              [0.1, 1]
-            );
-
+        node.split(' ').forEach((word) => {
+          if (word.trim() && wordIndex < MAX_WORDS) {
             elements.push(
               <motion.span
                 key={`word-${wordIndex}`}
-                style={{ opacity }}
-                transition={{ duration: 0.3 }}
+                style={{ opacity: wordOpacities[wordIndex] }}
                 className="inline-block mr-1.5 my-1 whitespace-nowrap"
               >
                 {word}
@@ -99,32 +122,42 @@ function App() {
           }
         });
       } else if (node.type === 'strong') {
-        // Strong tagları
-        const opacity = useTransform(
-          ScrollWord,
-          [0.3 + (wordIndex / 100 * 0.6), 0.4 + (wordIndex / 100 * 0.6)],
-          [0.1, 1]
-        );
-
-        elements.push(
-          <motion.span
-            key={`strong-${wordIndex}`}
-            style={{ opacity }}
-            transition={{ duration: 0.3 }}
-            className="inline-block font-bold text-[#85856F] mr-1.5 whitespace-nowrap"
-          >
-            {node.props.children}
-          </motion.span>
-        );
-        wordIndex++;
+        node.props.children.split(' ').forEach((word) => {
+          if (word.trim() && wordIndex < MAX_WORDS) {
+            elements.push(
+              <motion.span
+                key={`strong-${wordIndex}`}
+                style={{ opacity: wordOpacities[wordIndex] }}
+                className="inline-block font-bold text-[#85856F] mr-1.5 whitespace-nowrap"
+              >
+                {word}
+              </motion.span>
+            );
+            wordIndex++;
+          }
+        });
       } else if (node.type === 'br') {
-        // BR tagları için satır atlama
-        elements.push(<br key={`br-${nodeIndex}`} className="my-4" />);
+        elements.push(<br key={`br-${wordIndex}`} className="my-4" />);
       }
-    });
+    };
+
+    parse(text).forEach(processNode);
+
+    // Eksik kelimeler için boş span'ler (hook sırasını korumak için)
+    while (wordIndex < MAX_WORDS) {
+      elements.push(
+        <span
+          key={`empty-${wordIndex}`}
+          className="inline-block opacity-0"
+          style={{ width: "10px" }}
+        />
+      );
+      wordIndex++;
+    }
 
     return elements;
   };
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -161,7 +194,7 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 3, duration: 1 }}
         >
-          <Navbar />
+          <Navbar lang={lang} />
         </motion.div>
 
         <div className="!z-30 w-full h-[90%] overflow-hidden px-10">
@@ -207,12 +240,13 @@ function App() {
                     transition={{ duration: 1, delay: 4.5 }}
                     className='w-[70%] text-b text-xl relative max-md:w-full'
                   >
-                    Modern ve kullanıcı odaklı web uygulamaları geliştiriyorum.
-                    React, Next.js ve Node.js ile hızlı, ölçeklenebilir çözümler üretiyorum.
+                    {lang === 'tr'
+                      ? 'Modern ve kullanıcı odaklı web uygulamaları geliştiriyorum. React, Next.js ve Node.js ile hızlı, ölçeklenebilir çözümler üretiyorum.'
+                      : 'I develop modern and user-oriented web applications. I produce fast, scalable solutions with React, Next.js and Node.js.'}
                   </motion.div>
 
                   <div className='flex gap-5 w-full justify-start items-center max-md:gap-2'>
-                    {/*İletişim Butonu*/}
+                    {/*Dil Butonu*/}
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
@@ -225,8 +259,11 @@ function App() {
                           className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer"
                           onMouseEnter={() => setHovered(true)}
                           onMouseLeave={() => setHovered(false)}
+                          onClick={toggleLang}
                         >
-                          <div className='z-30 absolute w-full h-full top-[35%]'>İletişim</div>
+                          <div className='z-30 absolute w-full h-full top-[35%]'>
+                            {lang === 'tr' ? 'For English' : 'Türkçe için'}
+                          </div>
                         </motion.button>
 
                         {/* Alttaki Buton */}
@@ -336,7 +373,9 @@ function App() {
                         transition={{ duration: 1, delay: 4 }}
                         className='relative'
                       >
-                        <span className='text-center flex items-center justify-center'>(Frontend Developer)</span>
+                        <span className='text-center flex items-center justify-center'>
+                          {lang === 'tr' ? '(Frontend Geliştirici)' : '(Frontend Developer)'}
+                        </span>
                       </motion.div>
                     </motion.div>
                   </div>
@@ -364,8 +403,8 @@ function App() {
             />
 
             <div
-              id='Hakkımda'
-              className='text-3xl text-beyaz'>Hakkımda</div>
+              id="Hakkımda"
+              className='text-3xl text-beyaz'>{lang === 'tr' ? 'Hakkımda' : 'About'}</div>
             <div
 
               className="text-[40px] max-md:text-2xl leading-relaxed max-[400px]:!text-xl">
@@ -381,7 +420,7 @@ function App() {
           style={{ y: skillsParallax }}
           className='z-20'
         >
-          <Skills2 />
+          <Skills2 lang={lang} />
         </motion.div >
 
         {/* Projeler Section with Parallax - worksRef ekleme */}
@@ -391,11 +430,11 @@ function App() {
           style={{ y: worksParallax }}
           className="relative works-container"
         >
-          <Works />
+          <Works lang={lang} />
 
           {/* TransitionSection artık sabit pozisyonlu değil */}
           <motion.div className="relative min-md:pt-15">
-            <TransitionSection />
+            <TransitionSection lang={lang} />
           </motion.div>
         </motion.div>
 
@@ -403,12 +442,12 @@ function App() {
         <motion.div
 
           className=''>
-          <Contact />
+          <Contact lang={lang} />
         </motion.div>
 
         {/* Footer */}
         <motion.div>
-          <Footer />
+          <Footer lang={lang} />
         </motion.div>
 
         <CVModal isOpen={isCVModalOpen} onClose={closeCVModal} />

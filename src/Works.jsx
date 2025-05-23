@@ -187,7 +187,7 @@ const ProjectPreview = ({ project, isActive }) => {
     );
 };
 
-export default function Works() {
+export default function Works({ lang = 'tr' }) {
     const [activeProject, setActiveProject] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [windowHeight, setWindowHeight] = useState(0);
@@ -247,8 +247,10 @@ export default function Works() {
     const projects = [
         {
             id: 1,
-            title: "Zynote",
-            description: "Not Alma Uygulaması / MERN Stack (MongoDB, Express, React, Node.js)",
+            title: lang === 'tr' ? "Zynote" : "Zynote",
+            description: lang === 'tr'
+                ? "Not Alma Uygulaması / MERN Stack (MongoDB, Express, React, Node.js)"
+                : "Note Taking App / MERN Stack (MongoDB, Express, React, Node.js)",
             imageUrl: Zynote,
             githubLink: "https://github.com/Vi303832/CM",
             siteLink: "https://zynote.vercel.app/",
@@ -256,8 +258,10 @@ export default function Works() {
         },
         {
             id: 2,
-            title: "Sultan",
-            description: "Yerel İşletme Websitesi / React, Tailwind CSS",
+            title: lang === 'tr' ? "Sultan" : "Sultan",
+            description: lang === 'tr'
+                ? "Yerel İşletme Websitesi / React, Tailwind CSS"
+                : "Local Business Website / React, Tailwind CSS",
             imageUrl: Sultan,
             githubLink: "https://github.com/Vi303832/Sultan",
             siteLink: "https://www.sultandugunsalonlari.com.tr/",
@@ -265,8 +269,10 @@ export default function Works() {
         },
         {
             id: 3,
-            title: "Ekip",
-            description: "Yerel İşletme Websitesi / React, Tailwind CSS",
+            title: lang === 'tr' ? "Ekip" : "Ekip",
+            description: lang === 'tr'
+                ? "Yerel İşletme Websitesi / React, Tailwind CSS"
+                : "Local Business Website / React, Tailwind CSS",
             imageUrl: Ekip,
             githubLink: "https://github.com/Vi303832/ekip-boya-insaat",
             siteLink: "https://www.ekipboya.com/",
@@ -274,8 +280,10 @@ export default function Works() {
         },
         {
             id: 4,
-            title: "Kuf",
-            description: "E-ticaret Platformu / Firebase, Redux Toolkit, Cloudinary, React",
+            title: lang === 'tr' ? "Kuf" : "Kuf",
+            description: lang === 'tr'
+                ? "E-ticaret Platformu / Firebase, Redux Toolkit, Cloudinary, React"
+                : "E-commerce Platform / Firebase, Redux Toolkit, Cloudinary, React",
             imageUrl: Kuf,
             githubLink: "https://github.com/Vi303832/EcommerceP",
             siteLink: "https://kufproject.vercel.app/",
@@ -286,20 +294,20 @@ export default function Works() {
     const activeProjectData = projects.find((p) => p.id === activeProject);
     const previewHeight = getPreviewHeight();
 
+    // Section başlığı
+    const sectionTitle = { tr: 'Projeler', en: 'Projects' };
+
     return (
         <section
-
             ref={sectionRef} className="bg-a rounded-t-4xl border-t text-white py-6 md:py-10" >
             <div className="container mx-auto px-20 max-md:px-5">
                 <h2
-
                     className="text-3xl  pt-5 pb-10 max-md:pl-3 opacity-80"
                 >
-                    Projeler
+                    {sectionTitle[lang]}
                 </h2>
 
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8"
-
                     ref={projectsRef}>
                     {/* Projects list */}
                     <div className="w-full md:w-1/2 flex flex-col">
