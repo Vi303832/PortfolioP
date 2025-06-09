@@ -450,7 +450,7 @@ function App() {
           <Footer lang={lang} />
         </motion.div>
 
-        <CVModal isOpen={isCVModalOpen} onClose={closeCVModal} />
+        <CVModal isOpen={isCVModalOpen} onClose={closeCVModal} lang={lang} />
       </div>
     </div>
   );

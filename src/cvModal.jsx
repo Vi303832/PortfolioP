@@ -2,8 +2,9 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import cvPdf from './mehmetakiftanyericv.pdf'; // Make sure this path is correct
+import cvPdfEn from './mehmetakiftanyericv-en.pdf';
 
-const CVModal = ({ isOpen, onClose }) => {
+const CVModal = ({ isOpen, onClose, lang }) => {
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -44,7 +45,7 @@ const CVModal = ({ isOpen, onClose }) => {
                 <div className="h-full w-full flex flex-col">
                     {/* PDF Viewer */}
                     <iframe
-                        src={`${cvPdf}#view=fitH`}
+                        src={`${lang === 'en' ? cvPdfEn : cvPdf}#view=fitH`}
                         className="w-full flex-grow"
                         title="CV Preview"
                         loading="lazy"
@@ -53,11 +54,11 @@ const CVModal = ({ isOpen, onClose }) => {
                     {/* Download Button */}
                     <div className="absolute bottom-4 right-4">
                         <a
-                            href={cvPdf}
+                            href={lang === 'en' ? cvPdfEn : cvPdf}
                             download="MehmetAkifTanyeri_CV.pdf"
                             className="bg-[#F1C40F] text-white px-4 py-2 rounded hover:bg-[#B7950B] transition flex items-center gap-2"
                         >
-                            <span>CV'yi İndir</span>
+                            <span>{lang === 'tr' ? 'CV\'yi İndir' : 'Download CV'}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
                             </svg>
