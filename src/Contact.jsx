@@ -102,7 +102,7 @@ export default function Contact({ lang = 'tr' }) {
                         id="İletişim"
                         className="flex items-center justify-start gap-10 font-bold w-full tracking-wide max-xl:gap-5 flex-nowrap max-md:items-start max-md:gap-10 max-sm:flex-col max-sm:gap-0"
                     >
-                        <div>{texts.contact[lang].toUpperCase()}</div>
+                        <div>{lang === 'tr' ? 'İLETİŞİM' : 'CONTACT'}</div>
                     </motion.div>
                 </div>
             </div>

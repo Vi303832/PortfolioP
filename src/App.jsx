@@ -296,7 +296,7 @@ function App() {
                           onMouseLeave={() => setcvHovered(false)}
                           onClick={openCVModal}
                         >
-                          <div className='z-30 absolute w-full h-full top-[35%]'>CV İndir</div>
+                          <div className='z-30 absolute w-full h-full top-[35%]'>{lang === 'tr' ? 'CV İndir' : 'Download CV'}</div>
                         </motion.button>
 
                         {/* Alttaki Buton */}

@@ -1,11 +1,77 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaChevronDown, FaChevronUp, FaSpinner } from 'react-icons/fa';
 import Sultan from "./assets/gifs/Sultan.webm"
 import Ekip from "./assets/gifs/Ekip.webm"
 import Kuf from "./assets/gifs/Kuf.webm"
 import Zynote from "./assets/gifs/Zynote.webm"
 
+// Loading component
+const LoadingSpinner = () => (
+    <div className="w-full h-full flex items-center justify-center bg-zinc-900/50">
+        <div className="flex flex-col items-center gap-3">
+            <FaSpinner className="h-8 w-8 animate-spin text-zinc-400" />
+            <p className="text-zinc-400 text-sm">Loading...</p>
+        </div>
+    </div>
+);
+
+// Optimized video component with loading state
+const OptimizedVideo = ({ src, className, onLoad }) => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [hasError, setHasError] = useState(false);
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const handleLoadedData = () => {
+            setIsLoading(false);
+            onLoad?.();
+        };
+
+        const handleError = () => {
+            setIsLoading(false);
+            setHasError(true);
+        };
+
+        video.addEventListener('loadeddata', handleLoadedData);
+        video.addEventListener('error', handleError);
+
+        return () => {
+            video.removeEventListener('loadeddata', handleLoadedData);
+            video.removeEventListener('error', handleError);
+        };
+    }, [onLoad]);
+
+    if (hasError) {
+        return (
+            <div className={`${className} flex items-center justify-center bg-zinc-900/50`}>
+                <p className="text-zinc-400 text-sm">Video failed to load</p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="relative">
+            {isLoading && <LoadingSpinner />}
+            <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+            >
+                <source src={src} type="video/webm" />
+                <source src={src.replace('.webm', '.mp4')} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    );
+};
 
 const ProjectCard = ({ project, index, activeProject, setActiveProject, onHover }) => {
     const [isMobile, setIsMobile] = useState(false);
@@ -121,10 +187,10 @@ const ProjectCard = ({ project, index, activeProject, setActiveProject, onHover 
                 >
                     <div className="rounded-lg overflow-hidden">
                         {project.isGif ? (
-                            <video autoPlay loop muted playsInline className="w-full h-auto object-cover rounded-lg">
-                                <source src={project.imageUrl} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                            <OptimizedVideo
+                                src={project.imageUrl}
+                                className="w-full h-auto object-cover rounded-lg"
+                            />
                         ) : (
                             <img
                                 src={project.imageUrl || "/placeholder.svg"}
@@ -153,9 +219,10 @@ const ProjectPreview = ({ project, isActive }) => {
                     transition={{ duration: 0.3 }}
                 >
                     {project?.isGif ? (
-                        <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-                            <source src={project.imageUrl} type="video/mp4" />
-                        </video>
+                        <OptimizedVideo
+                            src={project.imageUrl}
+                            className="w-full h-full object-cover"
+                        />
                     ) : (
                         <img
                             src={project?.imageUrl || "/placeholder.svg"}
