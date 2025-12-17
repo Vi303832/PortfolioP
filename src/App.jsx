@@ -15,7 +15,7 @@ import Skills2 from './Skills2';
 import CVModal from './cvModal.jsx';
 import Contact from './Contact';
 import Footer from './Footer';
-import profile from './assets/profile.jpeg';
+import profile from './assets/profile.jpg';
 
 const MAX_WORDS = 50;
 
@@ -23,6 +23,9 @@ function App() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const openCVModal = () => setIsCVModalOpen(true);
   const closeCVModal = () => setIsCVModalOpen(false);
+
+  // İletişim modalı için state
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   let [started, setstarted] = useState(false);
 
@@ -37,6 +40,7 @@ function App() {
   const skillsRef = useRef(null);
   const worksRef = useRef(null);
   const contentRef = useRef(null);
+  const contactRef = useRef(null);
 
   // Reference for ScrollWords effect - keeping this as requested
   const scrollWordsRef = useRef(null);
@@ -281,15 +285,15 @@ function App() {
                       </div>
                     </motion.div>
 
-                    {/* CV Butonu */}
-                    <motion.div
+                    {/* CV Butonu
+                          <motion.div
                       className='w-[30vh] h-[10vh] overflow-hidden rounded-full relative'
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ duration: 1, delay: 4.5 }}
                     >
                       <div className="relative flex w-full h-full cursor-pointer">
-                        {/* Üstteki Buton */}
+                        
                         <motion.button
                           className="absolute w-full h-full bg-[#B7950B] text-white rounded-full cursor-pointer"
                           onMouseEnter={() => setcvHovered(true)}
@@ -299,7 +303,7 @@ function App() {
                           <div className='z-30 absolute w-full h-full top-[35%]'>{lang === 'tr' ? 'CV İndir' : 'Download CV'}</div>
                         </motion.button>
 
-                        {/* Alttaki Buton */}
+                        
                         <motion.button
                           className="absolute w-0 h-full bg-[#F1C40F] text-white rounded-full"
                           onMouseEnter={() => setcvHovered(true)}
@@ -314,6 +318,54 @@ function App() {
                         />
                       </div>
                     </motion.div>
+
+
+                    */}
+
+                    <motion.div
+                      className='w-[30vh] h-[10vh] overflow-hidden rounded-full relative'
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 1, delay: 4.5 }}
+                    >
+                      <div className="relative flex w-full h-full cursor-pointer">
+                        {/* Üstteki Buton */}
+                        <motion.button
+                          className="absolute w-full h-full bg-[#B7950B] text-white rounded-full cursor-pointer"
+                          onMouseEnter={() => setcvHovered(true)}
+                          onMouseLeave={() => setcvHovered(false)}
+                          onClick={() => {
+                            contactRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            setTimeout(() => {
+                              setIsContactModalOpen(true);
+                            }, 1000);
+                          }}
+                        >
+                          <div className='z-30 absolute w-full h-full top-[35%]'>{lang === 'tr' ? 'İletişim' : 'Contact'}</div>
+                        </motion.button>
+
+                        {/* Alttaki Buton */}
+                        <motion.button
+                          className="absolute w-0 h-full bg-[#F1C40F] text-white rounded-full"
+                          onMouseEnter={() => setcvHovered(true)}
+                          onMouseLeave={() => setcvHovered(false)}
+                          initial={{ width: "0", left: "-100px" }}
+                          animate={{
+                            width: cvHovered ? "100%" : "0",
+                            left: cvHovered ? "0" : "-100px",
+                          }}
+                          transition={{ duration: 1 }}
+                          onClick={() => {
+                            contactRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            setTimeout(() => {
+                              setIsContactModalOpen(true);
+                            }, 2000);
+                          }}
+                        />
+                      </div>
+                    </motion.div>
+
+
                   </div>
                 </div>
               </div>
@@ -440,9 +492,9 @@ function App() {
 
         {/* İletişim */}
         <motion.div
-
+          ref={contactRef}
           className=''>
-          <Contact lang={lang} />
+          <Contact lang={lang} isModalOpen={isContactModalOpen} setIsModalOpen={setIsContactModalOpen} />
         </motion.div>
 
         {/* Footer */}

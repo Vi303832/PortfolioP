@@ -2,9 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaInstagram, FaYoutube, FaTimes, FaEnvelope, FaShare, FaPaperPlane, FaArrowRight } from "react-icons/fa";
 
-export default function Contact({ lang = 'tr' }) {
+export default function Contact({ lang = 'tr', isModalOpen = false, setIsModalOpen }) {
     const [hovered, setHovered] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [formStatus, setFormStatus] = useState({
         submitted: false,
         submitting: false,
@@ -124,7 +123,7 @@ export default function Contact({ lang = 'tr' }) {
                                 transition={{ duration: 0.6, ease: "easeOut" }}
                                 className="w-[30vh] h-[10vh] overflow-hidden rounded-full cursor-pointer"
                             >
-                                <div className="relative flex w-full h-full cursor-pointer" onClick={() => setIsModalOpen(true)}>
+                                <div className="relative flex w-full h-full cursor-pointer" onClick={() => setIsModalOpen?.(true)}>
                                     {/* Üstteki Buton */}
                                     <motion.button
                                         className="absolute w-full h-full bg-[#3B3835] text-white rounded-full cursor-pointer flex items-center justify-center"
@@ -162,7 +161,7 @@ export default function Contact({ lang = 'tr' }) {
                         <div className="flex justify-between items-center p-6 border-b border-gray-700">
                             <h2 className="text-2xl font-bold text-white">{texts.contact[lang]}</h2>
                             <button
-                                onClick={() => setIsModalOpen(false)}
+                                onClick={() => setIsModalOpen?.(false)}
                                 className="rounded-full p-1 hover:bg-gray-700 transition-colors cursor-pointer"
                             >
                                 <FaTimes className="h-5 w-5 text-gray-300 cursor-pointer" />
