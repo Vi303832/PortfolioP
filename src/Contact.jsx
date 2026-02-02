@@ -111,7 +111,7 @@ export default function Contact({ lang = 'tr' }) {
             <div className="w-full bg-[#131311] text-white py-32 rounded-lg">
                 <div className="max-w-4xl flex items-center justify-center mx-auto">
                     <motion.div
-                        className="mb-12"
+                        className="mb-12 px-4 md:px-0"
                     >
                         <p className="text-sm text-gray-400 mb-2 flex justify-center w-full max-md:text-center">{texts.heroDesc[lang]}</p>
                         <h2 className="text-5xl md:text-6xl max-md:text-center font-bold mb-10">{texts.heroTitle[lang]}</h2>
