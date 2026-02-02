@@ -314,6 +314,17 @@ export default function Works({ lang = 'tr' }) {
     const projects = [
         {
             id: 1,
+            title: lang === 'tr' ? "Luminya" : "Luminya",
+            description: lang === 'tr'
+                ? "Kurumsal Website + Admin Panel / React, Tailwind CSS, Firebase"
+                : "Corporate Website + Admin Panel / React, Tailwind CSS, Firebase",
+            imageUrl: Sultan, // Geçici video, daha sonra güncellenecek
+            githubLink: "https://github.com/Vi303832/Luminya",
+            siteLink: "https://luminyaspa.com.tr/",
+            isGif: true,
+        },
+        {
+            id: 2,
             title: lang === 'tr' ? "Zynote" : "Zynote",
             description: lang === 'tr'
                 ? "Not Alma Uygulaması / MERN Stack (MongoDB, Express, React, Node.js)"
@@ -324,36 +335,25 @@ export default function Works({ lang = 'tr' }) {
             isGif: true,
         },
         {
-            id: 2,
-            title: lang === 'tr' ? "Sultan" : "Sultan",
-            description: lang === 'tr'
-                ? "Yerel İşletme Websitesi / React, Tailwind CSS"
-                : "Local Business Website / React, Tailwind CSS",
-            imageUrl: Sultan,
-            githubLink: "https://github.com/Vi303832/Sultan",
-            siteLink: "https://www.sultandugunsalonlari.com.tr/",
-            isGif: true,
-        },
-        {
             id: 3,
-            title: lang === 'tr' ? "Ekip" : "Ekip",
+            title: lang === 'tr' ? "Luna Den Spa" : "Luna Den Spa",
             description: lang === 'tr'
-                ? "Yerel İşletme Websitesi / React, Tailwind CSS"
-                : "Local Business Website / React, Tailwind CSS",
-            imageUrl: Ekip,
-            githubLink: "https://github.com/Vi303832/ekip-boya-insaat",
-            siteLink: "https://www.ekipboya.com/",
+                ? "Landing + Menü Yönetimi / React, Tailwind CSS, Firebase"
+                : "Landing + Menu Management / React, Tailwind CSS, Firebase",
+            imageUrl: Ekip, // Geçici video, daha sonra güncellenecek
+            githubLink: "https://github.com/Vi303832/Lunaspa",
+            siteLink: "https://www.lunadenspabar.com/",
             isGif: true,
         },
         {
             id: 4,
-            title: lang === 'tr' ? "Kuf" : "Kuf",
+            title: lang === 'tr' ? "Hilton Elazığ Otel Spa" : "Hilton Elazığ Hotel Spa",
             description: lang === 'tr'
-                ? "E-ticaret Platformu / Firebase, Redux Toolkit, Cloudinary, React"
-                : "E-commerce Platform / Firebase, Redux Toolkit, Cloudinary, React",
-            imageUrl: Kuf,
-            githubLink: "https://github.com/Vi303832/EcommerceP",
-            siteLink: "https://kufproject.vercel.app/",
+                ? "Luna Den Spa ile ortak Landing + Menü Yönetimi / React, Tailwind CSS, Firebase"
+                : "Shared Landing + Menu Management with Luna Den Spa / React, Tailwind CSS, Firebase",
+            imageUrl: Kuf, // Geçici video, daha sonra güncellenecek
+            githubLink: "https://github.com/Vi303832/Lunaspa",
+            siteLink: "https://www.lunadenspabar.com/",
             isGif: true,
         },
     ];
