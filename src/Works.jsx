@@ -5,6 +5,9 @@ import Sultan from "./assets/gifs/Sultan.webm"
 import Ekip from "./assets/gifs/Ekip.webm"
 import Kuf from "./assets/gifs/Kuf.webm"
 import Zynote from "./assets/gifs/Zynote.webm"
+import Divan from "./assets/gifs/Divan.webm"
+import Hilton from "./assets/gifs/Hilton.webm"
+import Luminya from "./assets/gifs/Luminya.webm"
 
 // Loading component
 const LoadingSpinner = () => (
@@ -318,7 +321,7 @@ export default function Works({ lang = 'tr' }) {
             description: lang === 'tr'
                 ? "Kurumsal Website + Admin Panel / React, Tailwind CSS, Firebase"
                 : "Corporate Website + Admin Panel / React, Tailwind CSS, Firebase",
-            imageUrl: Sultan, // Geçici video, daha sonra güncellenecek
+            imageUrl: Luminya,
             githubLink: "https://github.com/Vi303832/Luminya",
             siteLink: "https://luminyaspa.com.tr/",
             isGif: true,
@@ -336,11 +339,11 @@ export default function Works({ lang = 'tr' }) {
         },
         {
             id: 3,
-            title: lang === 'tr' ? "Luna Den Spa" : "Luna Den Spa",
+            title: lang === 'tr' ? "Divan Otel" : "Divan Otel",
             description: lang === 'tr'
                 ? "Landing + Menü Yönetimi / React, Tailwind CSS, Firebase"
                 : "Landing + Menu Management / React, Tailwind CSS, Firebase",
-            imageUrl: Ekip, // Geçici video, daha sonra güncellenecek
+            imageUrl: Divan,
             githubLink: "https://github.com/Vi303832/Lunaspa",
             siteLink: "https://www.lunadenspabar.com/",
             isGif: true,
@@ -349,9 +352,9 @@ export default function Works({ lang = 'tr' }) {
             id: 4,
             title: lang === 'tr' ? "Hilton Elazığ Otel Spa" : "Hilton Elazığ Hotel Spa",
             description: lang === 'tr'
-                ? "Luna Den Spa ile ortak Landing + Menü Yönetimi / React, Tailwind CSS, Firebase"
-                : "Shared Landing + Menu Management with Luna Den Spa / React, Tailwind CSS, Firebase",
-            imageUrl: Kuf, // Geçici video, daha sonra güncellenecek
+                ? "Divan Otel ile ortak Landing + Menü Yönetimi / React, Tailwind CSS, Firebase"
+                : "Shared Landing + Menu Management with Divan Otel / React, Tailwind CSS, Firebase",
+            imageUrl: Hilton,
             githubLink: "https://github.com/Vi303832/Lunaspa",
             siteLink: "https://www.lunadenspabar.com/",
             isGif: true,

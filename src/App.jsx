@@ -15,7 +15,7 @@ import Skills2 from './Skills2';
 import CVModal from './cvModal.jsx';
 import Contact from './Contact';
 import Footer from './Footer';
-import profile from './assets/profile.jpg';
+import profile from './assets/profile.jpeg';
 
 const MAX_WORDS = 50;
 
